@@ -46,30 +46,53 @@
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="running" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" />
-                        <Label layoutX="78.0" layoutY="6.0" text="Running" />
+                        <Label layoutX="73.0" layoutY="48.0" text="Running">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Strength" />
+                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Strength">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Skiing" />
+                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Skiing">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Other" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Other">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                   </Pane>
                </children>
             </GridPane>
             <Pane prefHeight="181.0" prefWidth="400.0" GridPane.rowIndex="2">
                <children>
-                  <TextField layoutX="120.0" layoutY="14.0" />
-                  <TextField layoutX="120.0" layoutY="50.0" />
+                  <TextField layoutX="103.0" layoutY="17.0" prefHeight="26.0" prefWidth="146.0" />
+                  <TextField layoutX="103.0" layoutY="50.0" prefHeight="26.0" prefWidth="146.0" />
+                  <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="21.0" prefHeight="17.0" prefWidth="51.0" text="Distance:" />
+                  <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="55.0" prefHeight="17.0" prefWidth="51.0" text="Time:" />
+                  <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="85.0" prefHeight="17.0" prefWidth="51.0" text="Workout:" />
+                  <Button fx:id="reset" layoutX="167.0" layoutY="121.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="79.0" text="Reset" />
+                  <Button fx:id="addWorkout" layoutX="103.0" layoutY="166.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="206.0" text="Add Workout">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="249.0" layoutY="21.0" text="km" />
+                  <Label layoutX="247.0" layoutY="55.0" text="min" />
                </children>
             </Pane>
          </children>
