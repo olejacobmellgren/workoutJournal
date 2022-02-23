@@ -24,13 +24,13 @@
             <Pane prefHeight="202.0" prefWidth="400.0">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="148.0" prefHeight="17.0" prefWidth="51.0" text="Time:" />
-                  <Label alignment="CENTER" layoutX="114.0" layoutY="45.0" prefHeight="20.0" prefWidth="173.0" text="Log Sleep">
+                  <TextField layoutX="133.0" layoutY="143.0" prefHeight="26.0" prefWidth="146.0" />
+                  <Label layoutX="277.0" layoutY="148.0" text="min" />
+                  <Label alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="84.0" prefWidth="174.0" text="Log Sleep">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="133.0" layoutY="143.0" prefHeight="26.0" prefWidth="146.0" />
-                  <Label layoutX="277.0" layoutY="148.0" text="min" />
                </children>
             </Pane>
          </children>
