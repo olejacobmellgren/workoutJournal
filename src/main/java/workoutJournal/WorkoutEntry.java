@@ -11,19 +11,34 @@ public class WorkoutEntry {
     private int duration;
     private String type;
 
-    public WorkoutEntry(int year, int month, int dayOfMonth, int distance, int duration, String type) {
-        checkYear(year);
-        this.year = year;
-        checkMonth(month);
-        this.month = month;
+    public WorkoutEntry(int dayOfMonth, int month, int year, String type, int distance, int duration) {
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
+        checkMonth(month);
+        this.month = month;
+        checkYear(year);
+        this.year = year;
+        checkType(type);
+        this.type = type;
         checkDistance(distance);
         this.distance = distance;
         checkDuration(duration);
         this.duration = duration;
-        checkType(type);
+        
+    }
+
+    public WorkoutEntry(int dayOfMonth, int month, int year, String type, int duration) {
+        checkDayOfMonth(dayOfMonth);
+        this.dayOfMonth = dayOfMonth;
+        checkMonth(month);
+        this.month = month;
+        checkYear(year);
+        this.year = year;
+        checkTypeStrength(type);
         this.type = type;
+        checkDuration(duration);
+        this.duration = duration;
+        
     }
 
     private void checkYear(int year) {
@@ -61,7 +76,10 @@ public class WorkoutEntry {
 
     private void checkDistance(int distance) {
         if (distance > 999) {
-            throw new IllegalArgumentException("Cannot add workout over 1000 kilometres");
+            throw new IllegalArgumentException("Cannot add workout over 1000 kilometres (Unhealthy)");
+        }
+        if (type.equals("Strength") && distance != 0) {
+            throw new IllegalArgumentException("Distance must be 0 when type is 'Strength'");
         }
     }
 
@@ -69,14 +87,15 @@ public class WorkoutEntry {
         return distance;
     }
 
-    private void checkDuration(int distance) {
+    private void checkDuration(int duration) {
         if (duration < 0) {
             throw new IllegalArgumentException("Duration cannot be negative");
         }
         if (duration > 480) {
-            throw new IllegalArgumentException("Unable to log workout over 8 hours");
+            throw new IllegalArgumentException("Unable to log workout over 8 hours (Unhealthy)");
         }
     }
+
     public int getDuration() {
         return duration;
     }
@@ -86,18 +105,28 @@ public class WorkoutEntry {
             throw new IllegalArgumentException("Type must be 'Running', 'Strength', 'Skiing' or 'Other'");
         }
     }
+
+    private void checkTypeStrength(String type) {
+        if (!(type.equals("Strength"))) {
+            throw new IllegalArgumentException("Type must be 'Strength' if no distance added");
+        }
+    }
+
     public String getType() {
         return type;
     }
 
     @Override
     public String toString() {
-        return type + ":" + distance +"km in " + duration;
+        if (type.equals("Strength")) {
+            return type + ": " + duration + " minutes of lifting weigths";
+        }
+        return type + ": " + distance +" kilometres in " + duration + " minutes";
     }
 
     public static void main(String[] args) {
-        WorkoutEntry workout1 = new WorkoutEntry(2001, 01, 20, 4, 30, "Running");
-        System.out.println(workout1.getDayOfMonth());
+        WorkoutEntry workout1 = new WorkoutEntry(20, 02, 2021, "Strength", 90);
+        System.out.println(workout1);
     }
     
 
