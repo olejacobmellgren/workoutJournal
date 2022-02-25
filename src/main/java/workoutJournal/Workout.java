@@ -2,7 +2,7 @@ package workoutJournal;
 
 import java.util.Calendar;
 
-public class WorkoutEntry {
+public class Workout {
 
     private int year;
     private int month;
@@ -11,7 +11,7 @@ public class WorkoutEntry {
     private int duration;
     private String type;
 
-    public WorkoutEntry(int dayOfMonth, int month, int year, String type, int distance, int duration) {
+    public Workout(int dayOfMonth, int month, int year, String type, int distance, int duration) {
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
         checkMonth(month);
@@ -27,7 +27,7 @@ public class WorkoutEntry {
         
     }
 
-    public WorkoutEntry(int dayOfMonth, int month, int year, String type, int duration) {
+    public Workout(int dayOfMonth, int month, int year, String type, int duration) {
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
         checkMonth(month);
@@ -60,6 +60,7 @@ public class WorkoutEntry {
             throw new IllegalArgumentException("Month is number between 01 and 12");
         }
     }
+    
     public int getMonth() {
         return month;
     }
@@ -125,7 +126,7 @@ public class WorkoutEntry {
     }
 
     public static void main(String[] args) {
-        WorkoutEntry workout1 = new WorkoutEntry(20, 02, 2021, "Strength", 90);
+        Workout workout1 = new Workout(20, 02, 2021, "Strength", 90);
         System.out.println(workout1);
     }
     
