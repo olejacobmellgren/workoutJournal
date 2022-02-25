@@ -7,11 +7,11 @@ public class Workout {
     private int year;
     private int month;
     private int dayOfMonth;
-    private int distance;
+    private double distance;
     private int duration;
     private String type;
 
-    public Workout(int dayOfMonth, int month, int year, String type, int distance, int duration) {
+    public Workout(int dayOfMonth, int month, int year, String type, double distance, int duration) {
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
         checkMonth(month);
@@ -60,7 +60,7 @@ public class Workout {
             throw new IllegalArgumentException("Month is number between 01 and 12");
         }
     }
-    
+
     public int getMonth() {
         return month;
     }
@@ -75,7 +75,7 @@ public class Workout {
         return dayOfMonth;
     }
 
-    private void checkDistance(int distance) {
+    private void checkDistance(double distance) {
         if (distance > 999) {
             throw new IllegalArgumentException("Cannot add workout over 1000 kilometres (Unhealthy)");
         }
@@ -84,7 +84,7 @@ public class Workout {
         }
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -126,8 +126,9 @@ public class Workout {
     }
 
     public static void main(String[] args) {
-        Workout workout1 = new Workout(20, 02, 2021, "Strength", 90);
+        Workout workout1 = new Workout(20, 02, 2021, "Running", 1, 90);
         System.out.println(workout1);
+        System.out.println(workout1.getDistance());
     }
     
 
