@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,6 +9,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
@@ -23,14 +27,65 @@
          <children>
             <Pane prefHeight="202.0" prefWidth="400.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="148.0" prefHeight="17.0" prefWidth="51.0" text="Duration:" />
-                  <TextField layoutX="133.0" layoutY="143.0" prefHeight="26.0" prefWidth="146.0" />
-                  <Label layoutX="277.0" layoutY="148.0" text="min" />
-                  <Label alignment="CENTER" layoutX="119.0" layoutY="14.0" prefHeight="84.0" prefWidth="174.0" text="Log Sleep">
+                  <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="186.0" prefHeight="17.0" prefWidth="51.0" text="Duration:" />
+                  <TextField layoutX="133.0" layoutY="182.0" prefHeight="26.0" prefWidth="146.0" />
+                  <Label layoutX="279.0" layoutY="186.0" text="min" />
+                  <Label alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="84.0" prefWidth="189.0" text="Log Sleep &amp; Mood">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Label layoutX="183.0" layoutY="128.0" text="Sleep">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="182.0" layoutY="27.0" text="Mood">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="61.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="134.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="206.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="278.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="351.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="8.0" fill="WHITE" layoutX="361.0" layoutY="112.0" startX="-23.5" startY="8.0" stroke="BLACK" />
+                  <Circle fill="WHITE" layoutX="48.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="76.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="121.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="149.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="193.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="221.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="265.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="293.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="337.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="365.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="18.0" controlY2="18.0" endX="3.5" endY="18.0" fill="WHITE" layoutX="361.0" layoutY="102.0" startX="-23.5" startY="18.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="288.0" layoutY="106.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="31.0" fill="WHITE" layoutX="217.0" layoutY="98.0" startX="-23.5" startY="31.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="-10.0" controlY1="17.0" controlY2="4.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="144.0" layoutY="114.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="-10.5" controlY1="17.0" controlY2="-12.0" endX="5.5" endY="17.000030517578125" fill="WHITE" layoutX="70.0" layoutY="118.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-18.999996185302734" controlX2="-9.5" controlY1="35.217010498046875" controlY2="31.0" endX="-9.5" endY="31.0" fill="WHITE" layoutX="89.0" layoutY="68.0" startX="-18.999996185302734" startY="35.217010498046875" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.065277099609375" controlX2="-14.299999237060547" controlY1="38.28533935546875" controlY2="42.600006103515625" endX="-14.299999237060547" endY="42.600006103515625" fill="WHITE" layoutX="67.0" layoutY="61.0" startX="-23.065277099609375" startY="38.28533935546875" stroke="BLACK" />
+                  <CheckBox layoutX="342.0" layoutY="162.0" mnemonicParsing="false" />
+                  <CheckBox layoutX="270.0" layoutY="162.0" mnemonicParsing="false" />
+                  <CheckBox layoutX="197.0" layoutY="162.0" mnemonicParsing="false" />
+                  <CheckBox layoutX="125.0" layoutY="162.0" mnemonicParsing="false" />
+                  <CheckBox layoutX="52.0" layoutY="162.0" mnemonicParsing="false" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Button fx:id="back2" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleBack2" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>
