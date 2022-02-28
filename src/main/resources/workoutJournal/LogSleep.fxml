@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workoutJournal.LogSleepController">
    <children>
       <GridPane prefHeight="732.0" prefWidth="412.0">
         <columnConstraints>
@@ -81,7 +81,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="back2" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleBack2" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
+                  <Button fx:id="backFromLogSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleBackFromLogSleep" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>

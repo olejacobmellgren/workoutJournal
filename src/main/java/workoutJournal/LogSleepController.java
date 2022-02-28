@@ -9,16 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class OverviewController {
+public class LogSleepController {
 
-    @FXML Button backFromOverview;
-
-    @FXML private void handleBackFromOverview() throws IOException{
+    @FXML Button backFromLogSleep;
+    
+    @FXML public void handleBackFromLogSleep() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
         Scene scene = new Scene(root);
-        Stage stage = (Stage) backFromOverview.getScene().getWindow();
+        Stage stage = (Stage) backFromLogSleep.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-    
 }

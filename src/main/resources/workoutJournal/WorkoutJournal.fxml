@@ -25,7 +25,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="logWorkout" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogWorkoutButton" prefHeight="75.0" prefWidth="251.0" text="Log Workout" textAlignment="CENTER">
+                  <Button fx:id="logWorkout" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogWorkout" prefHeight="75.0" prefWidth="251.0" text="Log Workout" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
