@@ -13,7 +13,7 @@ public class LogSleepController {
 
     @FXML Button backFromLogSleep;
     
-    @FXML public void handleBackFromLogSleep() throws IOException{
+    @FXML private void handleBackFromLogSleep() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) backFromLogSleep.getScene().getWindow();

@@ -16,7 +16,7 @@ public class WorkoutJournalController {
     @FXML Button logSleep;
     @FXML Button overview;
 
-    @FXML public void handleLogWorkout() throws IOException{
+    @FXML private void handleLogWorkout() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("LogWorkout.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage)logWorkout.getScene().getWindow();
@@ -24,7 +24,7 @@ public class WorkoutJournalController {
         stage.show();
     }
 
-    @FXML public void handleLogSleep() throws IOException {
+    @FXML private void handleLogSleep() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LogSleep.fxml"));
         Stage stage = (Stage) logSleep.getScene().getWindow();
         Scene scene = new Scene(root);
@@ -32,7 +32,7 @@ public class WorkoutJournalController {
         stage.show();
     }
 
-    @FXML public void handleOverview() throws IOException {
+    @FXML private void handleOverview() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Overview.fxml"));
         Stage stage = (Stage) overview.getScene().getWindow();
         Scene scene = new Scene(root);

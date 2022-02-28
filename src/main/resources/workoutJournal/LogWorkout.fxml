@@ -30,7 +30,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <DatePicker layoutX="85.0" layoutY="109.0" prefHeight="47.0" prefWidth="231.0" promptText="Enter date" />
+                  <DatePicker fx:id="date" layoutX="85.0" layoutY="109.0" prefHeight="47.0" prefWidth="231.0" promptText="Enter date" />
                </children>
             </Pane>
             <GridPane prefHeight="140.0" prefWidth="381.0" GridPane.rowIndex="1">
@@ -45,16 +45,15 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="running" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" />
-                        <Label layoutX="73.0" layoutY="48.0" text="Running">
+                        <Button fx:id="running" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleRunning" prefHeight="70.0" prefWidth="115.0" text="Running">
                            <font>
                               <Font size="16.0" />
-                           </font></Label>
+                           </font></Button>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Strength">
+                        <Button fx:id="strength" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleStrength" prefHeight="70.0" prefWidth="115.0" text="Strength">
                            <font>
                               <Font size="16.0" />
                            </font></Button>
@@ -62,7 +61,7 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Skiing">
+                        <Button fx:id="skiing" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleSkiing" prefHeight="70.0" prefWidth="115.0" text="Skiing">
                            <font>
                               <Font size="16.0" />
                            </font></Button>
@@ -70,7 +69,7 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="115.0" text="Other">
+                        <Button fx:id="other" alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleOther" prefHeight="70.0" prefWidth="115.0" text="Other">
                            <font>
                               <Font size="16.0" />
                            </font></Button>
@@ -80,25 +79,23 @@
             </GridPane>
             <Pane prefHeight="181.0" prefWidth="400.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="backFromLogWorkout" layoutX="98.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleBackFromLogWorkout" prefHeight="48.0" prefWidth="210.0" text="Back">
+                  <Button fx:id="backFromLogWorkout" layoutX="103.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleBackFromLogWorkout" prefHeight="48.0" prefWidth="206.0" text="Back">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="103.0" layoutY="17.0" prefHeight="26.0" prefWidth="146.0" />
-                  <TextField layoutX="103.0" layoutY="50.0" prefHeight="26.0" prefWidth="146.0" />
+                  <TextField fx:id="distanceField" layoutX="103.0" layoutY="17.0" prefHeight="26.0" prefWidth="146.0" />
+                  <TextField fx:id="durationField" layoutX="103.0" layoutY="50.0" prefHeight="26.0" prefWidth="146.0" />
                   <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="21.0" prefHeight="17.0" prefWidth="51.0" text="Distance:" />
                   <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="55.0" prefHeight="17.0" prefWidth="51.0" text="Duration:" />
-                  <Label alignment="CENTER_RIGHT" layoutX="44.0" layoutY="85.0" prefHeight="17.0" prefWidth="51.0" text="Workout:" />
-                  <Button fx:id="reset" layoutX="273.0" layoutY="80.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Reset" />
-                  <Button fx:id="addWorkout" layoutX="103.0" layoutY="114.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="206.0" text="Add Workout">
+                  <Button fx:id="reset" layoutX="170.0" layoutY="82.0" mnemonicParsing="false" onAction="#handleReset" prefHeight="17.0" prefWidth="73.0" text="Reset" />
+                  <Button fx:id="addWorkout" layoutX="103.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleAddWorkout" prefHeight="70.0" prefWidth="206.0" text="Add Workout">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
                   <Label layoutX="249.0" layoutY="21.0" text="km" />
                   <Label layoutX="247.0" layoutY="55.0" text="min" />
-                  <Label layoutX="101.0" layoutY="85.0" prefHeight="17.0" prefWidth="293.0" text="workout to be entered" />
                </children>
             </Pane>
          </children>
