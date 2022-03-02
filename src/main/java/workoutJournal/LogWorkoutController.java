@@ -16,19 +16,12 @@ import javafx.stage.Stage;
 public class LogWorkoutController {
 
     private Workout workout;
-    private WorkoutMonth workoutMonth;
+    private List<WorkoutYear> workoutYearsList = new ArrayList<>();
+    private List<Button> buttons = new ArrayList<>();
 
     @FXML DatePicker date;
-    @FXML Button running;
-    @FXML Button strength;
-    @FXML Button skiing;
-    @FXML Button other;
-    List<Button> buttons = new ArrayList<>();
-    @FXML Button reset;
-    @FXML Button addWorkout;
-    @FXML Button backFromLogWorkout;
-    @FXML TextField distanceField;
-    @FXML TextField durationField;
+    @FXML Button running, strength, skiing, other, reset, addWorkout, backFromLogWorkout;
+    @FXML TextField distanceField, durationField;
 
     @FXML private void handleBackFromLogWorkout() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -77,18 +70,32 @@ public class LogWorkoutController {
         int dayOfMonth = date.getValue().getDayOfMonth();
         int month = date.getValue().getMonthValue();
         int year = date.getValue().getYear();
-        if (workout)
-        
+
         for (Button button : buttons) {
             if (!button.isDisabled()){
                 type = button.getText();
             }
         }
+
         double distance = Double.parseDouble(distanceField.getText());
         int duration = Integer.parseInt(durationField.getText());
+
         if (type.equals("Strength")) {
             workout = new Workout(dayOfMonth, month, year, type, duration);
+        } else {
+            workout = new Workout(dayOfMonth, month, year, type, distance, duration);
         }
+
+        for (WorkoutYear workoutYear : workoutYearsList) {
+            if (workoutYear.getYear() == year) {
+                workoutYear.addWorkout(workout);
+                break;
+            }
+            WorkoutYear newWorkoutYear = new WorkoutYear(workout.getYear());
+            workoutYearsList.add(newWorkoutYear);
+        }
+        
+        
 
     }
 

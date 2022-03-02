@@ -120,9 +120,9 @@ public class Workout {
     @Override
     public String toString() {
         if (type.equals("Strength")) {
-            return type + ": " + duration + " minutes of lifting weigths";
+            return dayOfMonth + "." + month + "." + year + ": " + type + ", " + duration + " min";
         }
-        return type + ": " + distance +" kilometres in " + duration + " minutes";
+        return dayOfMonth + "." + month + "." + year + ": " + type + ", " + distance +" km, " + duration + " min";
     }
 
     public static void main(String[] args) {

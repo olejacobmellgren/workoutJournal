@@ -42,11 +42,11 @@ public class WorkoutMonth {
         return month;
     }
 
-    public void addWorkout(Workout workout) {
+    public void addWorkoutToMonth(Workout workout) {
         if (!((this.month == workout.getMonth()) && (this.year == workout.getYear()))) {
             throw new IllegalArgumentException("Cannot add workout to wrong month and year");
         }
-        workoutList.add(workout);
+        this.workoutList.add(workout);
     }
 
     public double getAverageDistance() {
@@ -113,20 +113,30 @@ public class WorkoutMonth {
         return amount;
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        for (Workout workout : workoutList) {
+            str += workout.toString() + "\n";
+        }
+        return str;
+    }
+
     public static void main(String[] args) {
         Workout workout1 = new Workout(01, 01, 2021, "Running", 50, 10);
         Workout workout2 = new Workout(02, 01, 2021, "Strength", 20);
         Workout workout3 = new Workout(03, 01, 2021, "Other", 30, 30);
         Workout workout4 = new Workout(05, 01, 2021, "Running", 10, 40);
         WorkoutMonth workoutMonth = new WorkoutMonth(2021, 01);
-        workoutMonth.addWorkout(workout1);
-        workoutMonth.addWorkout(workout2);
-        workoutMonth.addWorkout(workout3);
-        workoutMonth.addWorkout(workout4);
+        workoutMonth.addWorkoutToMonth(workout1);
+        workoutMonth.addWorkoutToMonth(workout2);
+        workoutMonth.addWorkoutToMonth(workout3);
+        workoutMonth.addWorkoutToMonth(workout4);
         System.out.println(workoutMonth.getAverageDistance());
         System.out.println(workoutMonth.getAverageDuration());
         System.out.println(workoutMonth.getMonth());
         System.out.println(workoutMonth.getRunningAmount());
+        System.out.println(workoutMonth);
 
 
 
