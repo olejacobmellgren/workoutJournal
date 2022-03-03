@@ -12,9 +12,7 @@ import javafx.stage.Stage;
 public class WorkoutJournalController {
 
 
-    @FXML Button logWorkout;
-    @FXML Button logSleep;
-    @FXML Button overview;
+    @FXML private Button logWorkout, logSleep, overview;
 
     @FXML private void handleLogWorkout() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("LogWorkout.fxml"));

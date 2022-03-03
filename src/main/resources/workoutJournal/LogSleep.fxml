@@ -30,8 +30,8 @@
             <Pane prefHeight="202.0" prefWidth="400.0">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="186.0" prefHeight="17.0" prefWidth="51.0" text="Duration:" />
-                  <TextField layoutX="133.0" layoutY="182.0" prefHeight="26.0" prefWidth="146.0" />
-                  <Label layoutX="291.0" layoutY="186.0" text="min" />
+                  <TextField fx:id="sleepAmount" layoutX="133.0" layoutY="182.0" prefHeight="26.0" prefWidth="146.0" />
+                  <Label layoutX="291.0" layoutY="186.0" text="hours" />
                   <Label alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="84.0" prefWidth="189.0" text="Log Sleep &amp; Mood">
                      <font>
                         <Font size="24.0" />
@@ -42,7 +42,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="131.0" layoutY="222.0" mnemonicParsing="false" text="Confirm Sleep For Today">
+                  <Button fx:id="confirmSleep" layoutX="131.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleConfirmSleep" text="Confirm Sleep For Today">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -88,7 +88,7 @@
                   <RadioButton fx:id="mood3" layoutX="198.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
                   <RadioButton fx:id="mood2" layoutX="269.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
                   <RadioButton fx:id="mood1" layoutX="342.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
-                  <Button layoutX="130.0" layoutY="204.0" mnemonicParsing="false" text="Confirm Mood For Today">
+                  <Button fx:id="confirmMood" layoutX="130.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleConfirmMood" text="Confirm Mood For Today">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

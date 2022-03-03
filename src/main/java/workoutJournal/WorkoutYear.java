@@ -43,7 +43,8 @@ public class WorkoutYear {
             }
         }
         WorkoutMonth workoutMonth = new WorkoutMonth(this.year, workout.getMonth());
-        workoutMonthsList.add(workoutMonth);
+        this.addMonth(workoutMonth);
+        workoutMonth.addWorkoutToMonth(workout);
     }
 
     @Override
@@ -70,11 +71,13 @@ public class WorkoutYear {
         workoutMonth.addWorkoutToMonth(workout2);
         workoutMonth2.addWorkoutToMonth(workout3);
         workoutMonth3.addWorkoutToMonth(workout4);
-        System.out.println(workoutMonth);
+        //System.out.println(workoutMonth);
         WorkoutYear workoutYear = new WorkoutYear(2021);
         workoutYear.addMonth(workoutMonth);
+        workoutYear.addMonth(workoutMonth2);
         workoutYear.addWorkoutToYear(workout5);
         System.out.println(workoutYear);
+        System.out.println("Hei");
 
 
 

@@ -2,6 +2,7 @@ package workoutJournal;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -15,13 +16,14 @@ import javafx.stage.Stage;
 
 public class LogWorkoutController {
 
-    private Workout workout;
-    private List<WorkoutYear> workoutYearsList = new ArrayList<>();
-    private List<Button> buttons = new ArrayList<>();
 
     @FXML DatePicker date;
     @FXML Button running, strength, skiing, other, reset, addWorkout, backFromLogWorkout;
     @FXML TextField distanceField, durationField;
+
+    private Workout workout;
+    private List<WorkoutYear> workoutYearsList = new ArrayList<>();
+    private List<Button> buttons = Arrays.asList(running, strength, skiing, other);
 
     @FXML private void handleBackFromLogWorkout() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -88,7 +90,7 @@ public class LogWorkoutController {
 
         for (WorkoutYear workoutYear : workoutYearsList) {
             if (workoutYear.getYear() == year) {
-                workoutYear.addWorkout(workout);
+                workoutYear.addWorkoutToYear(workout);
                 break;
             }
             WorkoutYear newWorkoutYear = new WorkoutYear(workout.getYear());
