@@ -21,8 +21,9 @@ public class LogWorkoutController {
     @FXML Button running, strength, skiing, other, reset, addWorkout, backFromLogWorkout;
     @FXML TextField distanceField, durationField;
 
-    private Workout workout;
-    private List<WorkoutYear> workoutYearsList = new ArrayList<>();
+    private Workout workout; //TODO
+    private String type;
+    public List<WorkoutYear> workoutYearsList = new ArrayList<>();
     private List<Button> buttons = Arrays.asList(running, strength, skiing, other);
 
     @FXML private void handleBackFromLogWorkout() throws IOException{
@@ -34,24 +35,28 @@ public class LogWorkoutController {
     }
 
     @FXML private void handleRunning() {
+        type = "Running";
         strength.setDisable(true);
         other.setDisable(true);
         skiing.setDisable(true);
     }
 
     @FXML private void handleStrength() {
+        type = "Strength";
         running.setDisable(true);
         other.setDisable(true);
         skiing.setDisable(true);
     }
 
     @FXML private void handleSkiing() {
+        type = "Skiing";
         strength.setDisable(true);
         other.setDisable(true);
         running.setDisable(true);
     }
 
     @FXML private void handleOther() {
+        type = "Other";
         strength.setDisable(true);
         running.setDisable(true);
         skiing.setDisable(true);
@@ -67,17 +72,10 @@ public class LogWorkoutController {
         durationField.clear();;
     }
 
-    String type;
     @FXML private void handleAddWorkout () {
         int dayOfMonth = date.getValue().getDayOfMonth();
         int month = date.getValue().getMonthValue();
         int year = date.getValue().getYear();
-
-        for (Button button : buttons) {
-            if (!button.isDisabled()){
-                type = button.getText();
-            }
-        }
 
         double distance = Double.parseDouble(distanceField.getText());
         int duration = Integer.parseInt(durationField.getText());
@@ -95,6 +93,7 @@ public class LogWorkoutController {
             }
             WorkoutYear newWorkoutYear = new WorkoutYear(workout.getYear());
             workoutYearsList.add(newWorkoutYear);
+        handleReset();
         }
         
         

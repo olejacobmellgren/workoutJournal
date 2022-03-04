@@ -28,6 +28,10 @@ public class WorkoutYear {
         return year;
     }
 
+    public List<WorkoutMonth> getMonthsWithWorkouts() {
+        return new ArrayList<>(workoutMonthsList);
+    }
+
     public void addMonth(WorkoutMonth workoutMonth) {
         if (!(this.year == workoutMonth.getYear())) {
             throw new IllegalArgumentException("Cannot add workout month to wrong year");

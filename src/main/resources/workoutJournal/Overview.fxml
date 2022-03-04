@@ -35,11 +35,11 @@
             </Pane>
             <Pane prefHeight="113.0" prefWidth="412.0" GridPane.rowIndex="1">
                <children>
-                  <Spinner layoutX="127.0" layoutY="216.0" />
-                  <Spinner layoutX="127.0" layoutY="170.0" />
+                  <Spinner fx:id="yearsSpinner" layoutX="127.0" layoutY="216.0" />
+                  <Spinner fx:id="monthsSpinner" layoutX="127.0" layoutY="170.0" />
                   <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="175.0" prefHeight="17.0" prefWidth="45.0" text="Month:" />
                   <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="221.0" prefHeight="17.0" prefWidth="45.0" text="Year:" />
-                  <Button layoutX="127.0" layoutY="262.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="159.0" text="Update Overview">
+                  <Button fx:id="updateOverview" layoutX="127.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleUpdateOverview" prefHeight="42.0" prefWidth="159.0" text="Update Overview">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -57,12 +57,12 @@
                   <Label layoutX="97.0" layoutY="141.0" text="You did other" />
                   <Label layoutX="51.0" layoutY="182.0" text="Average distance was" />
                   <Label alignment="CENTER_RIGHT" layoutX="52.0" layoutY="207.0" prefHeight="17.0" prefWidth="119.0" text="Average duration was" />
-                  <Label layoutX="193.0" layoutY="71.0" text="x" />
-                  <Label layoutX="193.0" layoutY="94.0" text="x" />
-                  <Label layoutX="193.0" layoutY="118.0" text="x" />
-                  <Label layoutX="193.0" layoutY="141.0" text="x" />
-                  <Label layoutX="187.0" layoutY="182.0" text="xxx" />
-                  <Label layoutX="187.0" layoutY="207.0" text="xxx" />
+                  <Label fx:id="runningAmount" layoutX="193.0" layoutY="71.0" text="x" />
+                  <Label fx:id="skiingAmount" layoutX="193.0" layoutY="94.0" text="x" />
+                  <Label fx:id="strengthAmount" layoutX="193.0" layoutY="118.0" text="x" />
+                  <Label fx:id="otherAmount" layoutX="193.0" layoutY="141.0" text="x" />
+                  <Label fx:id="averageDistance" layoutX="187.0" layoutY="182.0" text="xxx" />
+                  <Label fx:id="averageDuration" layoutX="187.0" layoutY="207.0" text="xxx" />
                   <Label layoutX="220.0" layoutY="71.0" text="times this month" />
                   <Label layoutX="220.0" layoutY="94.0" text="times this month" />
                   <Label layoutX="220.0" layoutY="118.0" text="times this month" />
