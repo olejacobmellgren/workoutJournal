@@ -20,8 +20,13 @@ public class LogSleepController {
     @FXML private  TextField sleepAmount;
     @FXML private RadioButton mood1, mood2, mood3, mood4, mood5;
 
-    public List<Integer> sleepList = new ArrayList<>();
-    public List<Integer> moodList = new ArrayList<>();
+    public List<Integer> sleepList;
+    public List<Integer> moodList;
+
+    public void initialize(List<Integer> sleepList, List<Integer> moodList) {
+        this.sleepList = sleepList;
+        this.moodList = moodList;
+    }
     
     @FXML private void handleBackFromLogSleep() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -55,4 +60,5 @@ public class LogSleepController {
             mood5.setSelected(false);
         }
     }
+
 }

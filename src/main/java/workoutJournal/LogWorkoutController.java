@@ -23,8 +23,12 @@ public class LogWorkoutController {
 
     private Workout workout; //TODO
     private String type;
-    public List<WorkoutYear> workoutYearsList = new ArrayList<>();
-    private List<Button> buttons = Arrays.asList(running, strength, skiing, other);
+    public List<WorkoutYear> workoutYears;
+    //private List<Button> buttons = Arrays.asList(running, strength, skiing, other);
+
+    public void initialize(List<WorkoutYear> workoutYears) {
+        this.workoutYears = workoutYears;
+    }
 
     @FXML private void handleBackFromLogWorkout() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -63,7 +67,7 @@ public class LogWorkoutController {
     }
 
     @FXML private void handleReset() {
-        date.getEditor().clear();;
+        date.getEditor().clear();
         strength.setDisable(false);
         running.setDisable(false);
         other.setDisable(false);
@@ -73,6 +77,7 @@ public class LogWorkoutController {
     }
 
     @FXML private void handleAddWorkout () {
+        date.getEditor().clear();
         int dayOfMonth = date.getValue().getDayOfMonth();
         int month = date.getValue().getMonthValue();
         int year = date.getValue().getYear();
@@ -86,14 +91,17 @@ public class LogWorkoutController {
             workout = new Workout(dayOfMonth, month, year, type, distance, duration);
         }
 
-        for (WorkoutYear workoutYear : workoutYearsList) {
+        if (workoutYears.isEmpty()) {
+            workoutYears.add(new WorkoutYear(workout.getYear()));
+        }
+        for (WorkoutYear workoutYear : workoutYears) {
             if (workoutYear.getYear() == year) {
                 workoutYear.addWorkoutToYear(workout);
                 break;
             }
             WorkoutYear newWorkoutYear = new WorkoutYear(workout.getYear());
-            workoutYearsList.add(newWorkoutYear);
-        handleReset();
+            workoutYears.add(newWorkoutYear);
+            handleReset();
         }
         
         

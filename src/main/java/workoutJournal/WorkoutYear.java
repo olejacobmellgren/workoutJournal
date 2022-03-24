@@ -79,9 +79,10 @@ public class WorkoutYear {
         WorkoutYear workoutYear = new WorkoutYear(2021);
         workoutYear.addMonth(workoutMonth);
         workoutYear.addMonth(workoutMonth2);
-        workoutYear.addWorkoutToYear(workout5);
+        workoutYear.addMonth(workoutMonth3);
+        //workoutYear.addWorkoutToYear(workout5);
         System.out.println(workoutYear);
-        System.out.println("Hei");
+        System.out.println(workoutYear.getYear());
 
 
 

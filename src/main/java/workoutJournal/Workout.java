@@ -12,6 +12,7 @@ public class Workout {
     private String type;
 
     public Workout(int dayOfMonth, int month, int year, String type, double distance, int duration) {
+        checkDateFuture(dayOfMonth, month, year);
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
         checkMonth(month);
@@ -28,6 +29,7 @@ public class Workout {
     }
 
     public Workout(int dayOfMonth, int month, int year, String type, int duration) {
+        checkDateFuture(dayOfMonth, month, year);
         checkDayOfMonth(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
         checkMonth(month);
@@ -41,13 +43,20 @@ public class Workout {
         
     }
 
+    private void checkDateFuture(int dayOfMonth, int month, int year) {
+        Calendar c = Calendar.getInstance();
+        int yearNow = c.get(Calendar.YEAR);
+        int monthNow = c.get(Calendar.MONTH) + 1;
+        int dayNow = c.get(Calendar.DAY_OF_MONTH);
+        if ((year > yearNow) || (year >= yearNow && month > monthNow) || (year >= yearNow && month >= monthNow && dayOfMonth > dayNow)){
+            throw new IllegalArgumentException("Cannot log workout for the future");
+        }
+
+    }
+    
     private void checkYear(int year) {
         if (year < 2000) {
             throw new IllegalArgumentException("Cannot log workout before year 2000");
-        }
-        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        if (year > currentYear) {
-            throw new IllegalArgumentException("Cannot log workout for the future");
         }
     }
 
@@ -79,9 +88,13 @@ public class Workout {
         if (distance > 999) {
             throw new IllegalArgumentException("Cannot add workout over 1000 kilometres (Unhealthy)");
         }
+        if (distance < 0) {
+            throw new IllegalArgumentException("Cannot add workout with negative distance");
+        }
         if (type.equals("Strength") && distance != 0) {
             throw new IllegalArgumentException("Distance must be 0 when type is 'Strength'");
         }
+        
     }
 
     public double getDistance() {
@@ -129,6 +142,7 @@ public class Workout {
         Workout workout1 = new Workout(20, 02, 2021, "Running", 1, 90);
         System.out.println(workout1);
         System.out.println(workout1.getDistance());
+        //System.out.println(Calendar.getInstance().get(Calendar.MONTH));
     }
     
 

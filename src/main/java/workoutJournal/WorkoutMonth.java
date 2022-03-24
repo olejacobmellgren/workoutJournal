@@ -49,6 +49,10 @@ public class WorkoutMonth {
         this.workoutList.add(workout);
     }
 
+    public List<Workout> getWorkouts() {
+        return new ArrayList<>(workoutList);
+    }
+
     public double getAverageDistance() {
         int sum = 0;
         int amount = 0;
