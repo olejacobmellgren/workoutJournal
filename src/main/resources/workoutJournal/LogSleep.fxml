@@ -23,84 +23,80 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="250.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="231.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Pane prefHeight="202.0" prefWidth="400.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="74.0" layoutY="186.0" prefHeight="17.0" prefWidth="51.0" text="Duration:" />
-                  <TextField fx:id="sleepAmount" layoutX="133.0" layoutY="182.0" prefHeight="26.0" prefWidth="146.0" />
-                  <Label layoutX="291.0" layoutY="186.0" text="hours" />
                   <Label alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="84.0" prefWidth="189.0" text="Log Sleep &amp; Mood">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="183.0" layoutY="128.0" text="Sleep">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="confirmSleep" layoutX="131.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleConfirmSleep" text="Confirm Sleep For Today">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                  <TextField fx:id="sleepMonth" layoutX="134.0" layoutY="144.0" prefHeight="26.0" prefWidth="146.0" promptText="mm" />
+                  <TextField fx:id="sleepYear" layoutX="134.0" layoutY="193.0" prefHeight="26.0" prefWidth="146.0" promptText="yyyy" />
+                  <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="148.0" prefHeight="17.0" prefWidth="60.0" text="Month:" />
+                  <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="197.0" prefHeight="17.0" prefWidth="60.0" text="Year:" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane prefHeight="282.0" prefWidth="412.0" GridPane.rowIndex="1">
                <children>
-                  <Label layoutX="182.0" layoutY="27.0" text="Mood">
+                  <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="58.0" prefHeight="17.0" prefWidth="60.0" text="Duration:" />
+                  <TextField fx:id="sleepAmount" layoutX="133.0" layoutY="54.0" prefHeight="26.0" prefWidth="146.0" />
+                  <Label layoutX="285.0" layoutY="58.0" text="hours" />
+                  <Label layoutX="191.0" text="Sleep">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Circle fill="WHITE" layoutX="61.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="134.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="206.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="278.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="351.0" layoutY="116.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
-                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="8.0" fill="WHITE" layoutX="361.0" layoutY="112.0" startX="-23.5" startY="8.0" stroke="BLACK" />
-                  <Circle fill="WHITE" layoutX="48.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="76.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="121.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="149.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="193.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="221.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="265.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="293.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="337.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fill="WHITE" layoutX="365.0" layoutY="111.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="18.0" controlY2="18.0" endX="3.5" endY="18.0" fill="WHITE" layoutX="361.0" layoutY="102.0" startX="-23.5" startY="18.0" stroke="BLACK" />
-                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="288.0" layoutY="106.0" startX="-23.5" startY="17.0" stroke="BLACK" />
-                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="31.0" fill="WHITE" layoutX="217.0" layoutY="98.0" startX="-23.5" startY="31.0" stroke="BLACK" />
-                  <CubicCurve controlX1="-23.5" controlX2="-10.0" controlY1="17.0" controlY2="4.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="144.0" layoutY="114.0" startX="-23.5" startY="17.0" stroke="BLACK" />
-                  <CubicCurve controlX1="-23.5" controlX2="-10.5" controlY1="17.0" controlY2="-12.0" endX="5.5" endY="17.000030517578125" fill="WHITE" layoutX="70.0" layoutY="118.0" startX="-23.5" startY="17.0" stroke="BLACK" />
-                  <CubicCurve controlX1="-18.999996185302734" controlX2="-9.5" controlY1="35.217010498046875" controlY2="31.0" endX="-9.5" endY="31.0" fill="WHITE" layoutX="89.0" layoutY="68.0" startX="-18.999996185302734" startY="35.217010498046875" stroke="BLACK" />
-                  <CubicCurve controlX1="-23.065277099609375" controlX2="-14.299999237060547" controlY1="38.28533935546875" controlY2="42.600006103515625" endX="-14.299999237060547" endY="42.600006103515625" fill="WHITE" layoutX="67.0" layoutY="61.0" startX="-23.065277099609375" startY="38.28533935546875" stroke="BLACK" />
-                  <RadioButton fx:id="mood5" layoutX="52.0" layoutY="163.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="mood" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="mood4" layoutX="125.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
-                  <RadioButton fx:id="mood3" layoutX="198.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
-                  <RadioButton fx:id="mood2" layoutX="269.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
-                  <RadioButton fx:id="mood1" layoutX="342.0" layoutY="163.0" mnemonicParsing="false" toggleGroup="$mood" />
-                  <Button fx:id="confirmMood" layoutX="130.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleConfirmMood" text="Confirm Mood For Today">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="backFromLogSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleBackFromLogSleep" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
+                  <Button fx:id="backFromLogSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleBackFromLogSleep" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="182.0" layoutY="14.0" text="Mood">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Circle fill="WHITE" layoutX="61.0" layoutY="103.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="134.0" layoutY="103.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="206.0" layoutY="103.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="278.0" layoutY="103.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="351.0" layoutY="103.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="8.0" fill="WHITE" layoutX="361.0" layoutY="99.0" startX="-23.5" startY="8.0" stroke="BLACK" />
+                  <Circle fill="WHITE" layoutX="48.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="76.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="121.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="149.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="193.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="221.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="265.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="293.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="337.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="365.0" layoutY="98.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="288.0" layoutY="93.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="31.0" fill="WHITE" layoutX="217.0" layoutY="85.0" startX="-23.5" startY="31.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="-10.0" controlY1="17.0" controlY2="4.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="144.0" layoutY="101.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <CubicCurve controlX1="-23.5" controlX2="-10.5" controlY1="17.0" controlY2="-12.0" endX="5.5" endY="17.000030517578125" fill="WHITE" layoutX="70.0" layoutY="105.0" startX="-23.5" startY="17.0" stroke="BLACK" />
+                  <RadioButton fx:id="mood5" layoutX="52.0" layoutY="150.0" mnemonicParsing="false" text="5" textFill="TRANSPARENT">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="mood" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="mood4" layoutX="125.0" layoutY="150.0" mnemonicParsing="false" text="4" textFill="TRANSPARENT" toggleGroup="$mood" />
+                  <RadioButton fx:id="mood3" layoutX="198.0" layoutY="150.0" mnemonicParsing="false" text="3" textFill="TRANSPARENT" toggleGroup="$mood" />
+                  <RadioButton fx:id="mood2" layoutX="269.0" layoutY="150.0" mnemonicParsing="false" text="2" textFill="TRANSPARENT" toggleGroup="$mood" />
+                  <RadioButton fx:id="mood1" layoutX="342.0" layoutY="150.0" mnemonicParsing="false" text="1" textFill="TRANSPARENT" toggleGroup="$mood" />
+                  <Button fx:id="logSleepAndMood" layoutX="130.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleLogSleepAndMood" prefHeight="44.0" prefWidth="153.0" text="Log Sleep and Mood">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

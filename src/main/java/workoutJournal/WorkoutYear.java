@@ -46,7 +46,7 @@ public class WorkoutYear {
                 return;
             }
         }
-        WorkoutMonth workoutMonth = new WorkoutMonth(this.year, workout.getMonth());
+        WorkoutMonth workoutMonth = new WorkoutMonth(workout.getMonth(), this.year);
         this.addMonth(workoutMonth);
         workoutMonth.addWorkoutToMonth(workout);
     }
@@ -63,7 +63,7 @@ public class WorkoutYear {
 
     public static void main(String[] args) {
         Workout workout1 = new Workout(01, 01, 2021, "Running", 50, 10);
-        Workout workout2 = new Workout(02, 01, 2021, "Strength", 20);
+        Workout workout2 = new Workout(02, 01, 2021, "Strength", 0, 20);
         Workout workout3 = new Workout(03, 02, 2021, "Other", 30, 30);
         Workout workout4 = new Workout(05, 03, 2021, "Running", 10, 40);
         Workout workout5 = new Workout(02, 04, 2021, "Running", 20, 40);

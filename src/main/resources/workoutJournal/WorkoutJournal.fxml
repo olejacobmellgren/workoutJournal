@@ -3,12 +3,15 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="412.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workoutJournal.WorkoutJournalController">
@@ -72,10 +75,186 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <TextField layoutX="136.0" layoutY="39.0" prefHeight="26.0" prefWidth="140.0" />
-                  <Label layoutX="136.0" layoutY="14.0" text="Distance Goal This Month" />
-                  <Button layoutX="162.0" layoutY="73.0" mnemonicParsing="false" text="Confirm Goal" />
-                  <Label layoutX="283.0" layoutY="44.0" text="km" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="103.0" layoutX="157.0" layoutY="13.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="103.0" layoutX="231.0" layoutY="27.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" width="27.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.1921568661928177" green="0.5882353186607361" blue="0.9607843160629272" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="198.0" layoutY="-3.0" rotate="135.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="123.0" layoutY="71.0" rotate="135.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="185.0" layoutY="47.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="64.0" layoutX="284.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="45.0" layoutX="208.0" layoutY="-4.0" rotate="135.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="45.0" layoutX="113.0" layoutY="91.0" rotate="135.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="45.0" layoutX="170.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="45.0" layoutX="299.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="16.0">
+                     <fill>
+                        <LinearGradient endX="0.3776722090261283" startX="0.6983372921615202">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
                </children>
             </Pane>
          </children>

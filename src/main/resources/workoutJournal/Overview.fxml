@@ -3,12 +3,15 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="412.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workoutJournal.WorkoutJournalController">
@@ -19,8 +22,8 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="125.0" minHeight="5.0" prefHeight="80.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="464.0" minHeight="10.0" prefHeight="315.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="439.0" minHeight="10.0" prefHeight="214.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="464.0" minHeight="10.0" prefHeight="332.2302551269531" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="439.0" minHeight="10.0" prefHeight="202.76974487304688" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="181.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -35,9 +38,9 @@
             </Pane>
             <Pane prefHeight="113.0" prefWidth="412.0" GridPane.rowIndex="1">
                <children>
-                  <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="175.0" prefHeight="17.0" prefWidth="45.0" text="Month:" />
-                  <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="221.0" prefHeight="17.0" prefWidth="45.0" text="Year:" />
-                  <Button fx:id="updateOverview" layoutX="127.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleUpdateOverview" prefHeight="42.0" prefWidth="159.0" text="Update Overview">
+                  <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="30.0" prefHeight="17.0" prefWidth="45.0" text="Month:" />
+                  <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="59.0" prefHeight="17.0" prefWidth="45.0" text="Year:" />
+                  <Button fx:id="updateOverview" layoutX="127.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleUpdateOverview" prefHeight="42.0" prefWidth="159.0" text="Update Overview">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -45,30 +48,62 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField fx:id="month" layoutX="126.0" layoutY="171.0" />
-                  <TextField fx:id="year" layoutX="126.0" layoutY="217.0" />
+                  <TextField fx:id="overviewMonth" layoutX="127.0" layoutY="25.0" promptText="mm" />
+                  <TextField fx:id="overviewYear" layoutX="126.0" layoutY="55.0" promptText="yyyy" />
+                  <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="277.0" prefHeight="17.0" prefWidth="144.0" text="Progress for distance goal" />
+                  <ProgressBar fx:id="distanceProgress" layoutX="185.0" layoutY="276.0" prefWidth="200.0" progress="0.0" />
+                  <Label layoutX="70.0" layoutY="153.0" text="Average sleep was" />
+                  <Label fx:id="averageSleep" layoutX="193.0" layoutY="153.0" text="0" />
+                  <Label layoutX="220.0" layoutY="153.0" prefHeight="17.0" prefWidth="95.0" text="hours this month" />
+                  <Label layoutX="68.0" layoutY="215.0" text="Average mood was" />
+                  <Label layoutX="308.0" layoutY="215.0" prefHeight="17.0" prefWidth="65.0" text="this month" />
+                  <Circle fill="WHITE" layoutX="238.0" layoutY="219.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="252.0" layoutY="214.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fill="WHITE" layoutX="224.0" layoutY="214.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <CubicCurve fx:id="sad" controlX1="-23.5" controlX2="-10.5" controlY1="17.0" controlY2="-12.0" endX="5.5" endY="17.000030517578125" fill="WHITE" layoutX="247.0" layoutY="221.0" startX="-23.5" startY="17.0" stroke="BLACK" visible="false" />
+                  <CubicCurve fx:id="lessSad" controlX1="-23.5" controlX2="-10.0" controlY1="17.0" controlY2="4.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="248.0" layoutY="217.0" startX="-23.5" startY="17.0" stroke="BLACK" visible="false" />
+                  <CubicCurve fx:id="neutral" controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="31.0" fill="WHITE" layoutX="249.0" layoutY="201.0" startX="-23.5" startY="31.0" stroke="BLACK" visible="false" />
+                  <CubicCurve fx:id="lessHappy" controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="17.0" fill="WHITE" layoutX="248.0" layoutY="209.0" startX="-23.5" startY="17.0" stroke="BLACK" visible="false" />
+                  <CubicCurve fx:id="happy" controlX1="-23.5" controlX2="3.5" controlY1="31.0" controlY2="31.0" endX="3.5" endY="8.0" fill="WHITE" layoutX="248.0" layoutY="215.0" startX="-23.5" startY="8.0" stroke="BLACK" visible="false" />
+                  <TextField fx:id="distanceGoalField" layoutX="184.0" layoutY="306.0" prefHeight="26.0" prefWidth="102.0" promptText="Distance goal" />
+                  <Button fx:id="setGoal" layoutX="323.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleSetGoal" text="Set goal">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="292.0" layoutY="310.0" text="km" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label layoutX="75.0" layoutY="71.0" text="You went running" />
-                  <Label alignment="CENTER_RIGHT" layoutX="75.0" layoutY="94.0" prefHeight="17.0" prefWidth="95.0" text="You went skiing" />
-                  <Label layoutX="37.0" layoutY="118.0" text="You did strength training" />
-                  <Label layoutX="97.0" layoutY="141.0" text="You did other" />
-                  <Label layoutX="51.0" layoutY="182.0" text="Average distance was" />
-                  <Label alignment="CENTER_RIGHT" layoutX="52.0" layoutY="207.0" prefHeight="17.0" prefWidth="119.0" text="Average duration was" />
-                  <Label fx:id="runningAmount" layoutX="193.0" layoutY="71.0" text="0" />
-                  <Label fx:id="skiingAmount" layoutX="193.0" layoutY="94.0" text="0" />
-                  <Label fx:id="strengthAmount" layoutX="193.0" layoutY="118.0" text="0" />
-                  <Label fx:id="otherAmount" layoutX="193.0" layoutY="141.0" text="0" />
-                  <Label fx:id="averageDistance" layoutX="193.0" layoutY="182.0" text="0" />
-                  <Label fx:id="averageDuration" layoutX="193.0" layoutY="207.0" text="0" />
-                  <Label layoutX="220.0" layoutY="71.0" text="times this month" />
-                  <Label layoutX="220.0" layoutY="94.0" text="times this month" />
-                  <Label layoutX="220.0" layoutY="118.0" text="times this month" />
-                  <Label layoutX="220.0" layoutY="141.0" text="times this month" />
-                  <Label layoutX="220.0" layoutY="182.0" prefHeight="17.0" prefWidth="90.0" text="km this month" />
-                  <Label layoutX="220.0" layoutY="207.0" prefHeight="17.0" prefWidth="90.0" text="min this month" />
+                  <Label layoutX="75.0" layoutY="40.0" text="You went running" />
+                  <Label alignment="CENTER_RIGHT" layoutX="75.0" layoutY="60.0" prefHeight="17.0" prefWidth="95.0" text="You went skiing" />
+                  <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="80.0" prefHeight="17.0" prefWidth="134.0" text="You did strength training" />
+                  <Label layoutX="97.0" layoutY="100.0" text="You did other" />
+                  <Label layoutX="51.0" layoutY="140.0" text="Average distance was" />
+                  <Label alignment="CENTER_RIGHT" layoutX="52.0" layoutY="160.0" prefHeight="17.0" prefWidth="119.0" text="Average duration was" />
+                  <Label fx:id="runningAmount" layoutX="193.0" layoutY="40.0" text="0" />
+                  <Label fx:id="skiingAmount" layoutX="193.0" layoutY="60.0" text="0" />
+                  <Label fx:id="strengthAmount" layoutX="193.0" layoutY="80.0" text="0" />
+                  <Label fx:id="otherAmount" layoutX="193.0" layoutY="100.0" text="0" />
+                  <Label fx:id="averageDistance" layoutX="193.0" layoutY="140.0" text="0" />
+                  <Label fx:id="averageDuration" layoutX="193.0" layoutY="160.0" text="0" />
+                  <Label layoutX="220.0" layoutY="40.0" text="times this month" />
+                  <Label layoutX="220.0" layoutY="60.0" text="times this month" />
+                  <Label layoutX="220.0" layoutY="80.0" text="times this month" />
+                  <Label layoutX="220.0" layoutY="100.0" text="times this month" />
+                  <Label layoutX="220.0" layoutY="140.0" prefHeight="17.0" prefWidth="90.0" text="km this month" />
+                  <Label layoutX="220.0" layoutY="160.0" prefHeight="17.0" prefWidth="90.0" text="min this month" />
+                  <Label alignment="CENTER_RIGHT" layoutX="168.0" layoutY="5.0" prefHeight="17.0" prefWidth="76.0" text="Current goal:">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentGoal" layoutX="261.0" layoutY="7.0" prefHeight="14.0" prefWidth="69.0" text="0">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
