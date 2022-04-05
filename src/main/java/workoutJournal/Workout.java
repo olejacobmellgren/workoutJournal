@@ -49,13 +49,13 @@ public class Workout {
         int monthNow = c.get(Calendar.MONTH) + 1;
         int dayNow = c.get(Calendar.DAY_OF_MONTH);
         if ((year > yearNow) || (year >= yearNow && month > monthNow) || (year >= yearNow && month >= monthNow && dayOfMonth > dayNow)){
-            throw new IllegalArgumentException("You are unable log for the future!");
+            throw new IllegalArgumentException("You are unable to log for the future!");
         }
     }
     
     private void checkYear(int year) {
         if (year < 2000) {
-            throw new IllegalArgumentException("You are unable log before year 2000!");
+            throw new IllegalArgumentException("You are unable to log before year 2000!");
         }
     }
 
@@ -85,7 +85,7 @@ public class Workout {
 
     private void checkDistance(double distance) {
         if (distance > 999) {
-            throw new IllegalArgumentException("You are unable add workout over 1000 kilometres (Unhealthy)");
+            throw new IllegalArgumentException("You are unable to add workout over 1000 kilometres");
         } else if (distance < 0) {
             throw new IllegalArgumentException("Distance must be a positive number");
         } else if (type.equals("Strength") && distance != 0) {
@@ -101,7 +101,7 @@ public class Workout {
         if (duration < 0) {
             throw new IllegalArgumentException("Duration must be a positive number");
         } else if (duration > 480) {
-            throw new IllegalArgumentException("Unable to log workout over 8 hours (Unhealthy)");
+            throw new IllegalArgumentException("You are unable to log workout over 8 hours (Unhealthy)");
         }
     }
 
