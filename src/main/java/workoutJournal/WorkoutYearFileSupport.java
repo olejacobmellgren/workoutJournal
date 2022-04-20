@@ -19,49 +19,56 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
         try (Scanner scanner = new Scanner(getFile(filename))) {
             List<WorkoutYear> workoutYearsList = new ArrayList<>();
             while (scanner.hasNext()) {
-                while (!scanner.nextLine().startsWith("Year")) {
-                    if (scanner.nextLine().startsWith("Month")) {
-                        String[] tmpMonth = scanner.nextLine().split(";");
-                        int month= Integer.parseInt(tmpMonth[1].strip());
-                        int mYear = Integer.parseInt(tmpMonth[2]);
-                        workoutMonth = new WorkoutMonth(month, mYear);
-                        workoutYear.addMonth(workoutMonth);
-                    } else if (scanner.nextLine().startsWith("Sleep")) {
-                        String[] tmpSleep = scanner.nextLine().split(":");
+                String line = scanner.nextLine();
+                if (line.startsWith("Year")) {
+                    String[] tmpYear = line.split(":");
+                    int year = Integer.parseInt(tmpYear[1].strip());
+                    workoutYear = new WorkoutYear(year);
+                    workoutYearsList.add(workoutYear);
+                } else if (line.startsWith("Month")) {
+                    String[] tmpMonth = line.split(";");
+                    int month= Integer.parseInt(tmpMonth[1].strip());
+                    int mYear = Integer.parseInt(tmpMonth[2]);
+                    workoutMonth = new WorkoutMonth(month, mYear);
+                    workoutYear.addMonth(workoutMonth);
+                } else if (line.startsWith("Sleep")) {
+                    try {
+                        String[] tmpSleep = line.split(":");
                         String[] sleepHours = tmpSleep[1].split(",");
                         for (int i = 0; i < sleepHours.length; i++) {
                             sleepList.add(Double.parseDouble(sleepHours[i]));
                         }
-                        workoutMonth.setSleepList(sleepList);
-                    } else if (scanner.nextLine().startsWith("Mood")) {
-                        String[] tmpMood = scanner.nextLine().split(":");
+                    } catch (NumberFormatException e) {
+                        continue;
+                    }
+                    
+                } else if (line.startsWith("Mood")) {
+                    try {
+                        String[] tmpMood = line.split(":");
                         String[] moods = tmpMood[1].split(",");
                         for (int i = 1; i < moods.length; i++) {
                             moodList.add(Integer.parseInt(moods[i]));
                         }
-                        workoutMonth.setMoodList(moodList);
-                    } else if (scanner.nextLine().isEmpty()) {
-                        workoutMonth.setSleepList(sleepList);
-                        workoutMonth.setMoodList(moodList);
-                    } else {
-                        String[] workoutLine = scanner.nextLine().split(",");
-                        String[] date = workoutLine[0].split(";");
-                        
-                        int day = Integer.parseInt(date[0]);
-                        int month = Integer.parseInt(date[1]);
-                        int year = Integer.parseInt(date[2]);
-
-                        String type = workoutLine[1].strip();
-                        double distance = Double.parseDouble(workoutLine[2].strip());
-                        double duration = Double.parseDouble(workoutLine[3].strip());
-                        Workout tmpWorkout = new Workout(day, month, year, type, distance, duration);
-                        workoutYear.addWorkoutToPeriod(tmpWorkout);
+                    } catch (NumberFormatException e) {
+                        continue;
                     }
+                } else if (line.isEmpty()) {
+                    workoutMonth.setSleepList(sleepList);
+                    workoutMonth.setMoodList(moodList);
+                } else {
+                    String[] workoutLine = line.split(",");
+                    String[] date = workoutLine[0].split(";");
+                    
+                    int day = Integer.parseInt(date[0]);
+                    int month = Integer.parseInt(date[1]);
+                    int year = Integer.parseInt(date[2]);
+                    String type = workoutLine[1].strip();
+                    double distance = Double.parseDouble(workoutLine[2].strip());
+                    double duration = Double.parseDouble(workoutLine[3].strip());
+                    Workout tmpWorkout = new Workout(day, month, year, type, distance, duration);
+                    workoutYear.addWorkoutToPeriod(tmpWorkout);
                 }
-                String[] tmpYear = scanner.nextLine().split(":");
-                int year = Integer.parseInt(tmpYear[1].strip());
-                workoutYear = new WorkoutYear(year);
-                workoutYearsList.add(workoutYear);
+                
             }
             scanner.close();
             return workoutYearsList;

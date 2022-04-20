@@ -74,7 +74,7 @@ public class WorkoutJournalController {
     private void showConfirmedMessage(String confirmedMessage) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("SUCCESSFUL");
-        alert.setHeaderText("Something went right!");
+        alert.setHeaderText("Success!");
         alert.setContentText(confirmedMessage);
         alert.showAndWait();
     }
@@ -337,7 +337,7 @@ public class WorkoutJournalController {
 
     @FXML private void handleLoadFromFile() {
         try {
-            workoutYearsFileHandler.readWorkoutYear("workoutYearsFile.txt");
+            workoutYearsList = workoutYearsFileHandler.readWorkoutYear("workoutYearsFile.txt");
             showConfirmedMessage("You successfully loaded from workoutYearsFile.txt");
 
         } catch (IOException e) {
