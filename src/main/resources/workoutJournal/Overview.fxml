@@ -115,10 +115,20 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="backFromOverview" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackFromOverview" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
+                  <Button fx:id="backFromOverview" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBackFromOverview" prefHeight="72.0" prefWidth="200.0" text="Back" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="save" layoutX="268.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSaveToFile" prefHeight="33.0" prefWidth="119.0" text="Save to file">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="load" layoutX="268.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleLoadFromFile" prefHeight="33.0" prefWidth="119.0" text="Load from file">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

@@ -127,14 +127,14 @@ public class Workout {
 
     @Override
     public String toString() {
-        if (type.equals("Strength")) {
-            return dayOfMonth + "." + month + "." + year + ": " + type + ", " + duration + " min";
-        }
-        return dayOfMonth + "." + month + "." + year + ": " + type + ", " + distance +" km, " + duration + " min";
+        //if (type.equals("Strength")) {
+        //    return dayOfMonth + "." + month + "." + year + ", " + type + ", " + duration;
+        //}
+        return dayOfMonth + ";" + month + ";" + year + ",\t" + type + ",     " + distance +",\t" + duration;
     }
 
     public static void main(String[] args) {
-        Workout workout1 = new Workout(20, 02, 2021, "Running", 1, 90);
+        Workout workout1 = new Workout(20, 02, 2021, "Other", 0, 90);
         System.out.println(workout1);
         System.out.println(workout1.getDistance());
         //System.out.println(Calendar.getInstance().get(Calendar.MONTH));

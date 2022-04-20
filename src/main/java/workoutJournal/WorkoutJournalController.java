@@ -2,7 +2,6 @@ package workoutJournal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -15,11 +14,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
-//import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.CubicCurve;
 import javafx.stage.Stage;
 
@@ -164,7 +161,7 @@ public class WorkoutJournalController {
 
             for (WorkoutYear workoutYear : workoutYearsList) {
                 if (workoutYear.getYear() == year) {
-                    workoutYear.addWorkoutToYear(workout);
+                    workoutYear.addWorkoutToPeriod(workout);
                     showConfirmedMessage("You successfully added this workout:\n" + workout);
                     handleReset();
                     return;
@@ -172,7 +169,7 @@ public class WorkoutJournalController {
             }
             WorkoutYear newWorkoutYear = new WorkoutYear(workout.getYear());
             workoutYearsList.add(newWorkoutYear);
-            newWorkoutYear.addWorkoutToYear(workout);
+            newWorkoutYear.addWorkoutToPeriod(workout);
             showConfirmedMessage("You successfully added this workout:\n" + workout);
             handleReset();
         } catch (IllegalArgumentException e) {
@@ -265,6 +262,7 @@ public class WorkoutJournalController {
     @FXML private CubicCurve sad, lessSad, neutral, lessHappy, happy;
 
     private static double distanceGoal;
+    private IWorkoutYearFileReading workoutYearsFileHandler = new WorkoutYearFileSupport();
 
     @FXML private void handleBackFromOverview() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -326,8 +324,25 @@ public class WorkoutJournalController {
             showErrorMessage("You need to set a distance goal");
         }
         showErrorMessage("You can only see overview for months containing workouts");
+    }
 
+    @FXML private void handleSaveToFile() {
+        try {
+            workoutYearsFileHandler.writeWorkoutYear("workoutYearsFile.txt", workoutYearsList);
+            showConfirmedMessage("You successfully saved to workoutYearsFile.txt");
+        } catch (IOException e) {
+            showErrorMessage("Saving to file did not work, try again later");
+        }
+    }
 
+    @FXML private void handleLoadFromFile() {
+        try {
+            workoutYearsFileHandler.readWorkoutYear("workoutYearsFile.txt");
+            showConfirmedMessage("You successfully loaded from workoutYearsFile.txt");
+
+        } catch (IOException e) {
+            showErrorMessage("Loading from file did not work, try again later");
+        }
     }
 
     @FXML private void handleSetGoal() {

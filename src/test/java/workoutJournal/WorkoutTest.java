@@ -27,46 +27,46 @@ public class WorkoutTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 05, 2022, "Running", 5, 90);
-        }, "Should not be able to log workout for the future");
+        }, "IllegalArgumentException should be thrown when trying to log workout for the future");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(35, 02, 2021, "Running", 5, 90);
-        }, "Day of month should be between 01 and 31");
+        }, "IllegalArgumentException should be thrown when day of month is not between 01 and 31");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 13, 2021, "Running", 5, 90);
-        }, "Month should be between 01 and 12");
+        }, "IllegalArgumentException should be thrown when month not between 01 and 12");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 1999, "Running", 5, 90);
-        }, "Should not be able to log workout before year 2000");
+        }, "IllegalArgumentException should be thrown when trying to log workout before year 2000");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Running", 1050, 90);
-        }, "Should not be able to log workout over 1000 km");
+        }, "IllegalArgumentException should be thrown when trying to log workout over 1000 km");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Strength", 10, 90);
-        }, "Should not be able to log workout of type 'Strength' with a distance");
+        }, "IllegalArgumentException should be thrown when trying to log workout of type 'Strength' with a distance");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Running", -10, 90);
-        }, "Should not be able to log workout with negative distance");
+        }, "IllegalArgumentException should be thrown when trying to log workout with negative distance");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Running", 10, -90);
-        }, "Should not be able to log workout with negative duration");
+        }, "IllegalArgumentException should be thrown when trying to log workout with negative duration");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Running", 10, 990);
-        }, "Should not be able to log workout with duration over 8 hours");
+        }, "IllegalArgumentException should be thrown when trying to log workout with duration over 8 hours");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Volleyball", 10, 990);
-        }, "Should not be able to log workout with type other than 'Running', 'Strength', 'Skiing' or 'Other'");
+        }, "IllegalArgumentException should be thrown when trying to log workout with type other than 'Running', 'Strength', 'Skiing' or 'Other'");
         
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Strength", 10, 20);
-        }, "Distance should be 0 when type is 'Strength'");
+        }, "IllegalArgumentException should be thrown when distance not 0 when type is 'Strength'");
     }
 }

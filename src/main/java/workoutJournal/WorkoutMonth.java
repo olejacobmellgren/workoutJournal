@@ -4,48 +4,32 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class WorkoutMonth {
+public class WorkoutMonth extends WorkoutPeriod{
 
-    private int year;
     private int month;
     private List<Workout> workoutList;
     private List<Double> sleepList;
     private List<Integer> moodList;
 
     public WorkoutMonth(int month, int year) {
-        checkDateFuture(month, year);
-        checkMonth(month);
+        super(year);
+        checkMonth(month, year);
         this.month = month;
-        checkYear(year);
-        this.year = year;
         this.workoutList = new ArrayList<>();
         this.sleepList = new ArrayList<>();
         this.moodList = new ArrayList<>();
     }
 
-    public void checkDateFuture(int month, int year) {
+    public void checkMonth(int month, int year) {
+        if (month < 1 || month > 12) {
+            throw new IllegalArgumentException("Month is number between 01 and 12");
+        }
+
         Calendar c = Calendar.getInstance();
         int yearNow = c.get(Calendar.YEAR);
         int monthNow = c.get(Calendar.MONTH) + 1;
-        if ((year > yearNow) || (year >= yearNow && month > monthNow)) {
+        if ((year == yearNow && month > monthNow)) {
             throw new IllegalArgumentException("Cannot log workout for the future");
-        }
-
-    }
-
-    private void checkYear(int year) {
-        if (year < 2000) {
-            throw new IllegalArgumentException("Cannot log workout before year 2000");
-        }
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void checkMonth(int month) {
-        if (month < 1 || month > 12) {
-            throw new IllegalArgumentException("Month is number between 01 and 12");
         }
     }
 
@@ -53,7 +37,7 @@ public class WorkoutMonth {
         return month;
     }
 
-    public void addWorkoutToMonth(Workout workout) {
+    public void addWorkoutToPeriod(Workout workout) {
         if (!((this.month == workout.getMonth()) && (this.year == workout.getYear()))) {
             throw new IllegalArgumentException("Cannot add workout to wrong month or year");
         }
@@ -119,7 +103,7 @@ public class WorkoutMonth {
         sleepList.add(sleepHours);
     }
 
-    public void checkSleep(double sleepHours) {
+    private void checkSleep(double sleepHours) {
         if (sleepHours < 0) {
             throw new IllegalArgumentException("Hours of sleep cannot be negative");
         } else if (sleepHours > 24) {
@@ -127,8 +111,23 @@ public class WorkoutMonth {
         }
     }
 
+    public void setSleepList(List<Double> sleepList) {
+        this.sleepList = sleepList;
+    }
+
     public void addMood(int mood) {
+        checkMood(mood);
         moodList.add(mood);
+    }
+
+    private void checkMood(int mood) {
+        if (mood < 1 || mood > 5) {
+            throw new IllegalArgumentException("Mood should be number between 1 and 5");
+        }
+    }
+
+    public void setMoodList(List<Integer> moodList) {
+        this.moodList = moodList;
     }
 
     public double getAverageSleep() {
@@ -147,11 +146,19 @@ public class WorkoutMonth {
 
     @Override
     public String toString() {
-        String str = "";
+        String str = "Month; " + month + ";" + year + "\n";
         for (Workout workout : workoutList) {
             str += workout.toString() + "\n";
         }
-        str += "Sleep list:" + sleepList + "\nMood list:" + moodList;
+        String sleepStr = "";
+        for (Double hours : sleepList) {
+            sleepStr += hours + ", ";
+        }
+        String moodStr = "";
+        for (Integer mood : moodList) {
+            moodStr += mood + ", ";
+        }
+        str += "Sleep: " + sleepStr + "\nMood: " + moodStr;
         return str;
     }
 
@@ -163,16 +170,16 @@ public class WorkoutMonth {
         Workout workout5 = new Workout(29, 01, 2021, "Skiing", 20, 30);
 
         WorkoutMonth workoutMonth = new WorkoutMonth(01, 2021);
-        workoutMonth.addWorkoutToMonth(workout1);
-        workoutMonth.addWorkoutToMonth(workout2);
-        workoutMonth.addWorkoutToMonth(workout3);
-        workoutMonth.addWorkoutToMonth(workout4);
-        workoutMonth.addWorkoutToMonth(workout5);
+        workoutMonth.addWorkoutToPeriod(workout1);
+        workoutMonth.addWorkoutToPeriod(workout2);
+        workoutMonth.addWorkoutToPeriod(workout3);
+        workoutMonth.addWorkoutToPeriod(workout4);
+        workoutMonth.addWorkoutToPeriod(workout5);
         workoutMonth.addSleep(8);
-        System.out.println(workoutMonth.getAverageDistance());
-        System.out.println(workoutMonth.getAverageDuration());
-        System.out.println(workoutMonth.getMonth());
-        System.out.println(workoutMonth.getRunningAmount());
+        //System.out.println(workoutMonth.getAverageDistance());
+        //System.out.println(workoutMonth.getAverageDuration());
+        //System.out.println(workoutMonth.getMonth());
+        //System.out.println(workoutMonth.getRunningAmount());
         System.out.println(workoutMonth);
         System.out.println(workoutMonth.getTotalDistance());
 
