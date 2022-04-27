@@ -212,6 +212,14 @@ public class WorkoutMonthTest {
         assertThrows(IllegalArgumentException.class, () -> {
             workoutMonth.addSleep(-6);
         }, "IllegalArgumentException should be thrown when trying to add negative hours of sleep");
+
+        for (int i = 0; i < 29; i++) {
+            workoutMonth.addSleep(8);
+        }
+
+        assertThrows(IllegalStateException.class, () -> {
+            workoutMonth.addSleep(9);
+        }, "IllegalStateException should be thrown when trying to add more than 31 days of sleep to a month");
     }
     
     @Test
@@ -228,6 +236,14 @@ public class WorkoutMonthTest {
         assertThrows(IllegalArgumentException.class, () -> {
             workoutMonth.addMood(-6);
         }, "IllegalArgumentException should be thrown when trying to add negative mood");
+
+        for (int i = 0; i < 29; i++) {
+            workoutMonth.addMood(3);
+        }
+
+        assertThrows(IllegalStateException.class, () -> {
+            workoutMonth.addMood(2);
+        }, "IllegalStateException should be thrown when trying to add mood more than 31 times a month");
     }   
 
     @Test

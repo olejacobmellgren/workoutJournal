@@ -20,7 +20,5 @@ public class WorkoutJournalApp extends Application{
         stage.setScene(new Scene(parent));
         stage.setTitle("Workout Journal");
         stage.show();
-    }
-
-    
+    }  
 }

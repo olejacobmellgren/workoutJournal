@@ -31,7 +31,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="logWorkout" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogWorkout" prefHeight="75.0" prefWidth="251.0" text="Log Workout" textAlignment="CENTER">
+                  <Button id="sale" fx:id="logWorkout" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogWorkout" prefHeight="75.0" prefWidth="251.0" stylesheets="@stylesheet.css" text="Log Workout" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -43,7 +43,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="logSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogSleep" prefHeight="75.0" prefWidth="251.0" text="Log Sleep" textAlignment="CENTER">
+                  <Button id="sale" fx:id="logSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleLogSleep" prefHeight="75.0" prefWidth="251.0" stylesheets="@stylesheet.css" text="Log Sleep" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -55,7 +55,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <Button fx:id="overview" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleOverview" prefHeight="75.0" prefWidth="251.0" text="Overview" textAlignment="CENTER">
+                  <Button id="sale" fx:id="overview" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleOverview" prefHeight="75.0" prefWidth="251.0" stylesheets="@stylesheet.css" text="Overview" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -208,7 +208,7 @@
                            <stops>
                               <Stop>
                                  <color>
-                                    <Color red="0.25" green="0.6499999761581421" blue="1.0" />
+                                    <Color red="0.250980406999588" green="0.6509804129600525" blue="1.0" />
                                  </color>
                               </Stop>
                               <Stop offset="1.0">
@@ -261,5 +261,10 @@
             </Pane>
          </children>
       </GridPane>
+      <Button id="sale" fx:id="allWorkouts" layoutX="124.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleAllWorkouts" prefHeight="45.0" prefWidth="165.0" style="-fx-font-size: 16;" stylesheets="@stylesheet.css" text="All Workouts Added">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

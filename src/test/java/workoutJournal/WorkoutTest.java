@@ -45,9 +45,9 @@ public class WorkoutTest {
             new Workout(20, 02, 2021, "Running", 1050, 90);
         }, "IllegalArgumentException should be thrown when trying to log workout over 1000 km");
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(IllegalStateException.class, () -> {
             new Workout(20, 02, 2021, "Strength", 10, 90);
-        }, "IllegalArgumentException should be thrown when trying to log workout of type 'Strength' with a distance");
+        }, "IllegalStateException should be thrown when trying to log workout of type 'Strength' with a distance");
 
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Running", -10, 90);
@@ -64,9 +64,5 @@ public class WorkoutTest {
         assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 02, 2021, "Volleyball", 10, 990);
         }, "IllegalArgumentException should be thrown when trying to log workout with type other than 'Running', 'Strength', 'Skiing' or 'Other'");
-        
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Workout(20, 02, 2021, "Strength", 10, 20);
-        }, "IllegalArgumentException should be thrown when distance not 0 when type is 'Strength'");
     }
 }

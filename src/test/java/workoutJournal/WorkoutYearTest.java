@@ -90,6 +90,5 @@ public class WorkoutYearTest {
         assertThrows(IllegalArgumentException.class, () -> {
             workoutYear.addWorkoutToPeriod(workout5);
         }, "IllegalArgumentException should be thrown when trying to add workout with year different from year assosiated with workout-year");
-    }
-    
+    }  
 }

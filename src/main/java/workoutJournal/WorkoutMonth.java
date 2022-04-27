@@ -1,5 +1,7 @@
 package workoutJournal;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -20,7 +22,7 @@ public class WorkoutMonth extends WorkoutPeriod{
         this.moodList = new ArrayList<>();
     }
 
-    public void checkMonth(int month, int year) {
+    private void checkMonth(int month, int year) {
         if (month < 1 || month > 12) {
             throw new IllegalArgumentException("Month is number between 01 and 12");
         }
@@ -50,18 +52,21 @@ public class WorkoutMonth extends WorkoutPeriod{
     }
 
     public double getAverageDistance() {
-        return workoutList.stream()
-                          .filter(w -> !w.getType().equals("Strength"))
-                          .mapToDouble(w -> w.getDistance())
-                          .average()
-                          .orElse(0);
-    }
+        double averageDistance = workoutList.stream()
+                                 .filter(w -> !w.getType().equals("Strength"))
+                                 .mapToDouble(w -> w.getDistance())
+                                 .average()
+                                 .orElse(0);
+        return new BigDecimal(averageDistance).setScale(1, RoundingMode.HALF_UP).doubleValue();
+    }  
 
     public double getAverageDuration() {
-        return workoutList.stream()
-                          .mapToDouble(w -> w.getDuration())
-                          .average()
-                          .orElse(0);
+        double averageDuration = workoutList.stream()
+                                 .mapToDouble(w -> w.getDuration())
+                                 .average()
+                                 .orElse(0);
+        return new BigDecimal(averageDuration).setScale(1, RoundingMode.HALF_UP).doubleValue();
+
     }
 
     public int getRunningAmount() {
@@ -93,9 +98,11 @@ public class WorkoutMonth extends WorkoutPeriod{
     }
 
     public double getTotalDistance() {
-        return workoutList.stream()
-                          .mapToDouble(w -> w.getDistance())
-                          .sum();
+        double totalDistance =  workoutList.stream()
+                                .mapToDouble(w -> w.getDistance())
+                                .sum();
+        return new BigDecimal(totalDistance).setScale(1, RoundingMode.HALF_UP).doubleValue();
+
     }
 
     public void addSleep(double sleepHours) {
@@ -108,11 +115,17 @@ public class WorkoutMonth extends WorkoutPeriod{
             throw new IllegalArgumentException("Hours of sleep cannot be negative");
         } else if (sleepHours > 24) {
             throw new IllegalArgumentException("You should only log sleep for one day, and there are only 24 hours in a day");
+        } else if (sleepList.size() == 31) {
+            throw new IllegalStateException("You should only enter one time of sleep per day, and you have already logged every sleep for this month");
         }
     }
 
     public void setSleepList(List<Double> sleepList) {
         this.sleepList = sleepList;
+    }
+
+    public List<Double> getSleepList() {
+        return new ArrayList<>(sleepList);
     }
 
     public void addMood(int mood) {
@@ -123,6 +136,8 @@ public class WorkoutMonth extends WorkoutPeriod{
     private void checkMood(int mood) {
         if (mood < 1 || mood > 5) {
             throw new IllegalArgumentException("Mood should be number between 1 and 5");
+        } else if (moodList.size() == 31) {
+            throw new IllegalStateException("You should only enter one mood per day, and you have already logged every mood for this month");
         }
     }
 
@@ -130,11 +145,17 @@ public class WorkoutMonth extends WorkoutPeriod{
         this.moodList = moodList;
     }
 
+    public List<Integer> getMoodList() {
+        return new ArrayList<>(moodList);
+    }
+
+
     public double getAverageSleep() {
-        return sleepList.stream()
-                        .mapToDouble(w -> w)
-                        .average()
-                        .orElse(0);
+        double averageSleep = sleepList.stream()
+                              .mapToDouble(w -> w)
+                              .average()
+                              .orElse(0);
+        return new BigDecimal(averageSleep).setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 
     public double getAverageMood() {
@@ -144,6 +165,23 @@ public class WorkoutMonth extends WorkoutPeriod{
                         .orElse(0);
     }
 
+   @Override
+   public boolean equals(Object obj) {
+       if (obj instanceof WorkoutMonth) {
+           WorkoutMonth workoutMonth = (WorkoutMonth) obj;
+           for (int i = 0; i < this.getWorkouts().size(); i++) {
+               if (!this.getWorkouts().get(i).equals(workoutMonth.getWorkouts().get(i))) {
+                   return false;
+               }
+           }
+           if ((!this.getSleepList().equals(workoutMonth.getSleepList()) || (!this.getMoodList().equals(workoutMonth.getMoodList())))) {
+               return false;
+           }
+           return true;
+       }
+       return false;
+   }
+
     @Override
     public String toString() {
         String str = "Month; " + month + ";" + year + "\n";
@@ -152,43 +190,14 @@ public class WorkoutMonth extends WorkoutPeriod{
         }
         String sleepStr = "";
         for (Double hours : sleepList) {
-            sleepStr += hours + ", ";
+            sleepStr += ", " + hours;
         }
         String moodStr = "";
         for (Integer mood : moodList) {
-            moodStr += mood + ", ";
+            moodStr += ", " + mood;
         }
-        str += "Sleep: " + sleepStr + "\nMood: " + moodStr;
+        str += "Sleep" + sleepStr + "\nMood" + moodStr;
         return str;
-    }
-
-    public static void main(String[] args) {
-        Workout workout1 = new Workout(01, 01, 2021, "Running", 50, 40);
-        Workout workout2 = new Workout(02, 01, 2021, "Strength", 0, 20);
-        Workout workout3 = new Workout(03, 01, 2021, "Skiing", 30, 30);
-        Workout workout4 = new Workout(19, 01, 2021, "Skiing", 20, 30);
-        Workout workout5 = new Workout(29, 01, 2021, "Skiing", 20, 30);
-
-        WorkoutMonth workoutMonth = new WorkoutMonth(01, 2021);
-        workoutMonth.addWorkoutToPeriod(workout1);
-        workoutMonth.addWorkoutToPeriod(workout2);
-        workoutMonth.addWorkoutToPeriod(workout3);
-        workoutMonth.addWorkoutToPeriod(workout4);
-        workoutMonth.addWorkoutToPeriod(workout5);
-        workoutMonth.addSleep(8);
-        //System.out.println(workoutMonth.getAverageDistance());
-        //System.out.println(workoutMonth.getAverageDuration());
-        //System.out.println(workoutMonth.getMonth());
-        //System.out.println(workoutMonth.getRunningAmount());
-        System.out.println(workoutMonth);
-        System.out.println(workoutMonth.getTotalDistance());
-
-
-
-
-
-    }
-
-
-    
+    } 
 }
+

@@ -26,6 +26,4 @@ public abstract class WorkoutPeriod {
     }
 
     public abstract void addWorkoutToPeriod(Workout workout);
-    
-    
 }

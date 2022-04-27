@@ -36,8 +36,8 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="sleepMonth" layoutX="134.0" layoutY="144.0" prefHeight="26.0" prefWidth="146.0" promptText="mm" />
-                  <TextField fx:id="sleepYear" layoutX="134.0" layoutY="193.0" prefHeight="26.0" prefWidth="146.0" promptText="yyyy" />
+                  <TextField fx:id="sleepMonth" layoutX="134.0" layoutY="144.0" prefHeight="26.0" prefWidth="146.0" promptText="mm" style="-fx-background-radius: 8;" />
+                  <TextField fx:id="sleepYear" layoutX="134.0" layoutY="193.0" prefHeight="26.0" prefWidth="146.0" promptText="yyyy" style="-fx-background-radius: 8;" />
                   <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="148.0" prefHeight="17.0" prefWidth="60.0" text="Month:" />
                   <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="197.0" prefHeight="17.0" prefWidth="60.0" text="Year:" />
                   <ImageView fitHeight="84.0" fitWidth="119.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -50,7 +50,7 @@
             <Pane prefHeight="282.0" prefWidth="412.0" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER_RIGHT" layoutX="62.0" layoutY="58.0" prefHeight="17.0" prefWidth="60.0" text="Duration:" />
-                  <TextField fx:id="sleepAmount" layoutX="133.0" layoutY="54.0" prefHeight="26.0" prefWidth="146.0" />
+                  <TextField fx:id="sleepAmount" layoutX="133.0" layoutY="54.0" prefHeight="26.0" prefWidth="146.0" style="-fx-background-radius: 8;" />
                   <Label layoutX="285.0" layoutY="58.0" text="hours" />
                   <Label layoutX="191.0" text="Sleep">
                      <font>
@@ -61,7 +61,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="backFromLogSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleBackFromLogSleep" prefHeight="75.0" prefWidth="251.0" text="Back" textAlignment="CENTER">
+                  <Button id="sale" fx:id="backFromLogSleep" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="240.0" mnemonicParsing="false" onAction="#handleBackFromLogSleep" prefHeight="75.0" prefWidth="251.0" stylesheets="@stylesheet.css" text="Back" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -103,7 +103,7 @@
                   <RadioButton fx:id="mood3" layoutX="198.0" layoutY="150.0" mnemonicParsing="false" text="3" textFill="TRANSPARENT" toggleGroup="$mood" />
                   <RadioButton fx:id="mood2" layoutX="269.0" layoutY="150.0" mnemonicParsing="false" text="2" textFill="TRANSPARENT" toggleGroup="$mood" />
                   <RadioButton fx:id="mood1" layoutX="342.0" layoutY="150.0" mnemonicParsing="false" text="1" textFill="TRANSPARENT" toggleGroup="$mood" />
-                  <Button fx:id="logSleepAndMood" layoutX="130.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleLogSleepAndMood" prefHeight="44.0" prefWidth="153.0" text="Log Sleep and Mood">
+                  <Button id="sale" fx:id="logSleepAndMood" layoutX="130.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleLogSleepAndMood" prefHeight="44.0" prefWidth="153.0" style="-fx-font-size: 13;" stylesheets="@stylesheet.css" text="Log Sleep and Mood">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

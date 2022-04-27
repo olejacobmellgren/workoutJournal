@@ -13,8 +13,7 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
     public List<WorkoutYear> readWorkoutYear(String filename) throws IOException{
         WorkoutMonth workoutMonth = null;
         WorkoutYear workoutYear = null;
-        List<Double> sleepList = new ArrayList<>();
-        List<Integer> moodList = new ArrayList<>();
+        
 
         try (Scanner scanner = new Scanner(getFile(filename))) {
             List<WorkoutYear> workoutYearsList = new ArrayList<>();
@@ -33,28 +32,29 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
                     workoutYear.addMonth(workoutMonth);
                 } else if (line.startsWith("Sleep")) {
                     try {
-                        String[] tmpSleep = line.split(":");
-                        String[] sleepHours = tmpSleep[1].split(",");
-                        for (int i = 0; i < sleepHours.length; i++) {
+                        List<Double> sleepList = new ArrayList<>();
+                        String[] sleepHours = line.split(",");
+                        for (int i = 1; i < sleepHours.length; i++) {
                             sleepList.add(Double.parseDouble(sleepHours[i]));
                         }
+                        workoutMonth.setSleepList(sleepList);
                     } catch (NumberFormatException e) {
                         continue;
                     }
                     
                 } else if (line.startsWith("Mood")) {
                     try {
-                        String[] tmpMood = line.split(":");
-                        String[] moods = tmpMood[1].split(",");
+                        List<Integer> moodList = new ArrayList<>();
+                        String[] moods = line.split(",");
                         for (int i = 1; i < moods.length; i++) {
-                            moodList.add(Integer.parseInt(moods[i]));
+                            moodList.add(Integer.parseInt(moods[i].strip()));
                         }
+                        workoutMonth.setMoodList(moodList);
                     } catch (NumberFormatException e) {
                         continue;
                     }
                 } else if (line.isEmpty()) {
-                    workoutMonth.setSleepList(sleepList);
-                    workoutMonth.setMoodList(moodList);
+                    continue;
                 } else {
                     String[] workoutLine = line.split(",");
                     String[] date = workoutLine[0].split(";");
@@ -79,7 +79,11 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
     public void writeWorkoutYear(String filename, List<WorkoutYear> workoutYearsList) throws IOException{
        try (PrintWriter writer = new PrintWriter(getFile(filename))) {
            for (WorkoutYear workoutYear : workoutYearsList) {
-               writer.println(workoutYear.toString());
+                if (workoutYearsList.get(workoutYearsList.size()-1).equals(workoutYear)) {
+                    writer.println(workoutYear.toString());
+               } else {
+                    writer.println(workoutYear.toString() + "\n");
+               }
            }
        }
         
@@ -87,6 +91,5 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
 
     public File getFile(String filename) {
         return new File(WorkoutYearFileSupport.class.getResource("workoutYearsFiles/").getFile() + filename + ".txt");
-    }
-    
+    }     
 }

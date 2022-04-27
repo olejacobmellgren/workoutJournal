@@ -14,6 +14,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
@@ -50,6 +51,32 @@ public class WorkoutJournalController {
         stage.show();
     }
 
+    @FXML private void handleAllWorkouts() {
+        if (workoutYearsList.size() == 0) {
+            showErrorMessage("You have not added any workouts yet");
+            return;
+        }
+        String allWorkouts = "";
+
+        for (WorkoutYear workoutYear : workoutYearsList) { 
+            for (WorkoutMonth workoutMonth : workoutYear.getMonthsWithWorkouts()) {
+                for (Workout workout : workoutMonth.getWorkouts()) {
+                    allWorkouts += workout.toString() + "\n";
+                }
+            }   
+            
+        }
+        TextArea textArea = new TextArea(allWorkouts);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("ALL WORKOUTS");
+        alert.setHeaderText("Here are all workouts:");
+        alert.setContentText("dd.mm.yyyy,  Type,  Distance(km),  Duration(min)");
+        alert.getDialogPane().setExpandableContent(textArea);
+        alert.getDialogPane().setExpanded(true);
+        alert.showAndWait();
+
+    }
+
     //LogWorkoutController
     
     @FXML DatePicker date;
@@ -58,10 +85,8 @@ public class WorkoutJournalController {
     
     private static List<WorkoutYear> workoutYearsList = new ArrayList<>();
 
-    private Workout workout; //TODO
+    private Workout workout;
     private String type;
-    //public List<WorkoutYear> workoutYearsList = new ArrayList<>();
-    //private List<Button> buttons = Arrays.asList(running, strength, skiing, other);
 
     private void showErrorMessage(String errorMessage) {
         Alert alert = new Alert(AlertType.ERROR);
@@ -126,10 +151,6 @@ public class WorkoutJournalController {
     }
 
     @FXML private void handleAddWorkout () {
-    
-        int dayOfMonth = date.getValue().getDayOfMonth();
-        int month = date.getValue().getMonthValue();
-        int year = date.getValue().getYear();
         
         try {
             Double.parseDouble(distanceField.getText());
@@ -157,6 +178,10 @@ public class WorkoutJournalController {
         double duration = Double.parseDouble(durationField.getText());
 
         try {
+            int dayOfMonth = date.getValue().getDayOfMonth();
+            int month = date.getValue().getMonthValue();
+            int year = date.getValue().getYear();
+
             workout = new Workout(dayOfMonth, month, year, type, distance, duration);
 
             for (WorkoutYear workoutYear : workoutYearsList) {
@@ -174,6 +199,10 @@ public class WorkoutJournalController {
             handleReset();
         } catch (IllegalArgumentException e) {
             showErrorMessage(e.getMessage());
+        } catch (IllegalStateException e) {
+            showErrorMessage(e.getMessage());
+        } catch (NullPointerException e) {
+            showErrorMessage("Please select date by using datepicker");
         }
     }
         
@@ -184,9 +213,6 @@ public class WorkoutJournalController {
     @FXML private TextField sleepMonth, sleepYear, sleepAmount;
     @FXML private RadioButton mood1, mood2, mood3, mood4, mood5;
     @FXML private ToggleGroup mood;
-
-    //private static List<Double> sleepList = new ArrayList<>();
-    //private static List<Integer> moodList = new ArrayList<>();
     
     @FXML private void handleBackFromLogSleep() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("WorkoutJournal.fxml"));
@@ -227,7 +253,6 @@ public class WorkoutJournalController {
                             sleepYear.clear();
                             sleepMonth.clear();
                             selectedButton.setSelected(false);
-                            System.out.println(workoutYearsList);
                             return;
                         }
                     }
@@ -255,13 +280,13 @@ public class WorkoutJournalController {
 
     @FXML private Button backFromOverview, updateOverveiw, setGoal;
     @FXML private Label runningAmount, skiingAmount, strengthAmount, otherAmount,
-                         averageDistance, averageDuration, averageSleep;
+                        averageDistance, averageDuration, averageSleep;
     @FXML private Label currentGoal;
     @FXML private TextField overviewMonth, overviewYear, distanceGoalField;
     @FXML private ProgressBar distanceProgress;
     @FXML private CubicCurve sad, lessSad, neutral, lessHappy, happy;
 
-    private static double distanceGoal;
+    private static double distanceGoal = 0;
     private IWorkoutYearFileReading workoutYearsFileHandler = new WorkoutYearFileSupport();
 
     @FXML private void handleBackFromOverview() throws IOException{
@@ -288,47 +313,51 @@ public class WorkoutJournalController {
             return;
         }
 
-        try {
-            int monthChoice = Integer.valueOf(overviewMonth.getText());
-            int yearChoice = Integer.valueOf(overviewYear.getText());
-            for (WorkoutYear workoutYear : workoutYearsList) {
-                if (yearChoice == workoutYear.getYear()) {
-                    for (WorkoutMonth workoutMonth : workoutYear.getMonthsWithWorkouts()) {
-                        if (monthChoice == workoutMonth.getMonth()) {
-                            if (workoutMonth.getAverageMood() > 4.5) {
-                                sad.setVisible(true);
-                            } else if (workoutMonth.getAverageMood() > 3.5) {
-                                lessSad.setVisible(true);
-                            } else if (workoutMonth.getAverageMood() > 2.5) {
-                                neutral.setVisible(true);
-                            } else if (workoutMonth.getAverageMood() > 1.5) {
-                                lessHappy.setVisible(true);
-                            } else if (workoutMonth.getAverageMood() < 0) {
-                                happy.setVisible(true);
-                            }
-                            averageSleep.setText(String.valueOf(workoutMonth.getAverageSleep()));
-                            distanceProgress.setProgress(workoutMonth.getTotalDistance()/distanceGoal); //TODO
-                            runningAmount.setText(String.valueOf(workoutMonth.getRunningAmount()));
-                            skiingAmount.setText(String.valueOf(workoutMonth.getSkiingAmount()));
-                            strengthAmount.setText(String.valueOf(workoutMonth.getStrengthAmount()));
-                            otherAmount.setText(String.valueOf(workoutMonth.getOtherAmount()));
-                            averageDistance.setText(String.valueOf(workoutMonth.getAverageDistance()));
-                            averageDuration.setText(String.valueOf(workoutMonth.getAverageDuration()));
+        int monthChoice = Integer.valueOf(overviewMonth.getText());
+        int yearChoice = Integer.valueOf(overviewYear.getText());
+        for (WorkoutYear workoutYear : workoutYearsList) {
+            if (yearChoice == workoutYear.getYear()) {
+                for (WorkoutMonth workoutMonth : workoutYear.getMonthsWithWorkouts()) {
+                    if (monthChoice == workoutMonth.getMonth()) {
+                        if (workoutMonth.getAverageMood() > 4.5) {
+                            sad.setVisible(true);
+                        } else if (workoutMonth.getAverageMood() > 3.5) {
+                            lessSad.setVisible(true);
+                        } else if (workoutMonth.getAverageMood() > 2.5) {
+                            neutral.setVisible(true);
+                        } else if (workoutMonth.getAverageMood() > 1.5) {
+                            lessHappy.setVisible(true);
+                        } else if (workoutMonth.getAverageMood() < 0) {
+                            happy.setVisible(true);
+                        }
+                        averageSleep.setText(String.valueOf(workoutMonth.getAverageSleep()));
+                        if (distanceGoal == 0) {
+                            showErrorMessage("You must set a distance goal");
                             return;
                         }
+                        distanceProgress.setProgress(workoutMonth.getTotalDistance()/distanceGoal); //TODO
+                        runningAmount.setText(String.valueOf(workoutMonth.getRunningAmount()));
+                        skiingAmount.setText(String.valueOf(workoutMonth.getSkiingAmount()));
+                        strengthAmount.setText(String.valueOf(workoutMonth.getStrengthAmount()));
+                        otherAmount.setText(String.valueOf(workoutMonth.getOtherAmount()));
+                        averageDistance.setText(String.valueOf(workoutMonth.getAverageDistance()));
+                        averageDuration.setText(String.valueOf(workoutMonth.getAverageDuration()));
+                        return;
                     }
-
                 }
             }
-        } catch (ArithmeticException e) {
-            showErrorMessage("You need to set a distance goal");
         }
         showErrorMessage("You can only see overview for months containing workouts");
     }
 
     @FXML private void handleSaveToFile() {
+
+        if (workoutYearsList.size() == 0) {
+            showErrorMessage("You have not added any workouts to save");
+            return;
+        }
         try {
-            workoutYearsFileHandler.writeWorkoutYear("workoutYearsFile.txt", workoutYearsList);
+            workoutYearsFileHandler.writeWorkoutYear("workoutYearsFile", workoutYearsList);
             showConfirmedMessage("You successfully saved to workoutYearsFile.txt");
         } catch (IOException e) {
             showErrorMessage("Saving to file did not work, try again later");
@@ -337,7 +366,11 @@ public class WorkoutJournalController {
 
     @FXML private void handleLoadFromFile() {
         try {
-            workoutYearsList = workoutYearsFileHandler.readWorkoutYear("workoutYearsFile.txt");
+            workoutYearsList = workoutYearsFileHandler.readWorkoutYear("workoutYearsFile");
+            if (workoutYearsList.size() == 0) {
+                showErrorMessage("There was nothing to load from file");
+                return;
+            }
             showConfirmedMessage("You successfully loaded from workoutYearsFile.txt");
 
         } catch (IOException e) {
@@ -358,6 +391,5 @@ public class WorkoutJournalController {
         } catch (IllegalArgumentException e) {
             showErrorMessage(e.getMessage());
         }
-    }
-    
+    }   
 }
