@@ -103,7 +103,7 @@
                   <RadioButton fx:id="mood3" layoutX="198.0" layoutY="150.0" mnemonicParsing="false" text="3" textFill="TRANSPARENT" toggleGroup="$mood" />
                   <RadioButton fx:id="mood2" layoutX="269.0" layoutY="150.0" mnemonicParsing="false" text="2" textFill="TRANSPARENT" toggleGroup="$mood" />
                   <RadioButton fx:id="mood1" layoutX="342.0" layoutY="150.0" mnemonicParsing="false" text="1" textFill="TRANSPARENT" toggleGroup="$mood" />
-                  <Button id="sale" fx:id="logSleepAndMood" layoutX="130.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleLogSleepAndMood" prefHeight="44.0" prefWidth="153.0" style="-fx-font-size: 13;" stylesheets="@stylesheet.css" text="Log Sleep and Mood">
+                  <Button id="sale" fx:id="logSleepAndMood" layoutX="113.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleLogSleepAndMood" prefHeight="44.0" prefWidth="189.0" style="-fx-font-size: 13;" stylesheets="@stylesheet.css" text="Log Sleep and Mood">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

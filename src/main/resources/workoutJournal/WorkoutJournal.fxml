@@ -261,7 +261,7 @@
             </Pane>
          </children>
       </GridPane>
-      <Button id="sale" fx:id="allWorkouts" layoutX="124.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleAllWorkouts" prefHeight="45.0" prefWidth="165.0" style="-fx-font-size: 16;" stylesheets="@stylesheet.css" text="All Workouts Added">
+      <Button id="sale" fx:id="allWorkouts" layoutX="108.0" layoutY="637.0" mnemonicParsing="false" onAction="#handleAllWorkouts" prefHeight="45.0" prefWidth="196.0" style="-fx-font-size: 16;" stylesheets="@stylesheet.css" text="All Workouts Added">
          <font>
             <Font size="16.0" />
          </font>
