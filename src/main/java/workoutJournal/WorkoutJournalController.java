@@ -357,7 +357,7 @@ public class WorkoutJournalController {
             return;
         }
         try {
-            workoutYearsFileHandler.writeWorkoutYear("workoutYearsFile", workoutYearsList);
+            workoutYearsFileHandler.writeWorkoutYears("workoutYearsFile", workoutYearsList);
             showConfirmedMessage("You successfully saved to workoutYearsFile.txt");
         } catch (IOException e) {
             showErrorMessage("Saving to file did not work, try again later " + e.getMessage());
@@ -366,7 +366,7 @@ public class WorkoutJournalController {
 
     @FXML private void handleLoadFromFile() {
         try {
-            workoutYearsList = workoutYearsFileHandler.readWorkoutYear("workoutYearsFile");
+            workoutYearsList = workoutYearsFileHandler.readWorkoutYears("workoutYearsFile");
             if (workoutYearsList.size() == 0) {
                 showErrorMessage("There was nothing to load from file");
                 return;

@@ -110,7 +110,7 @@ public class WorkoutYearFileSupportTest {
     @Test
     public void testReadWorkoutYearsFile() throws IOException {
         List<WorkoutYear> expectedWorkoutYearsList = getFilledListOfWorkoutYears();
-        List<WorkoutYear> actualWorkoutYearsList = getWorkoutYearFileSupport().readWorkoutYear("validFile");
+        List<WorkoutYear> actualWorkoutYearsList = getWorkoutYearFileSupport().readWorkoutYears("validFile");
 
         try {
 
@@ -127,7 +127,7 @@ public class WorkoutYearFileSupportTest {
     public void testReadInvalidWorkoutYearsFile() throws IOException {
 
         assertThrows(IllegalArgumentException.class, () -> {
-            getWorkoutYearFileSupport().readWorkoutYear("invalidFile");
+            getWorkoutYearFileSupport().readWorkoutYears("invalidFile");
         }, "IllegalArgumentException should be thrown when trying to read from invalid file");
     }
 
@@ -135,13 +135,13 @@ public class WorkoutYearFileSupportTest {
     public void testLoadNonExistingFile() {
         assertThrows(
                 IOException.class,
-                () -> getWorkoutYearFileSupport().readWorkoutYear("non_existing_file"),
+                () -> getWorkoutYearFileSupport().readWorkoutYears("non_existing_file"),
                 "IOException should be thrown if file does not exist!");
     }
 
     @Test
     public void testWriteWorkoutYearsFile() throws IOException {
-        getWorkoutYearFileSupport().writeWorkoutYear("newFile", getFilledListOfWorkoutYears());
+        getWorkoutYearFileSupport().writeWorkoutYears("newFile", getFilledListOfWorkoutYears());
         String expectedString = validWorkoutYearsFileContent + System.getProperty("line.separator");
         BufferedReader reader = new BufferedReader(new FileReader(WorkoutYearFileSupportTest.class.getResource("workoutYearsFiles/").getFile() + "newFile.txt"));
         String actualString = "";

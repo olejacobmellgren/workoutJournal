@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
 
     @Override
-    public List<WorkoutYear> readWorkoutYear(String filename) throws IOException{
+    public List<WorkoutYear> readWorkoutYears(String filename) throws IOException{
         WorkoutMonth workoutMonth = null;
         WorkoutYear workoutYear = null;
         
@@ -76,7 +76,7 @@ public class WorkoutYearFileSupport implements IWorkoutYearFileReading {
     }
 
     @Override
-    public void writeWorkoutYear(String filename, List<WorkoutYear> workoutYearsList) throws IOException{
+    public void writeWorkoutYears(String filename, List<WorkoutYear> workoutYearsList) throws IOException{
        try (PrintWriter writer = new PrintWriter(getFile(filename))) {
            for (WorkoutYear workoutYear : workoutYearsList) {
                 if (workoutYearsList.get(workoutYearsList.size()-1).equals(workoutYear)) {
