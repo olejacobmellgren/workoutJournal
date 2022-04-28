@@ -34,6 +34,10 @@ public class WorkoutTest {
         }, "IllegalArgumentException should be thrown when day of month is not between 01 and 31");
 
         assertThrows(IllegalArgumentException.class, () -> {
+            new Workout(35, 02, 2021, "Running", 0, 90);
+        }, "IllegalArgumentException should be thrown when distance is 0 and type is not 'Strength'");
+
+        assertThrows(IllegalArgumentException.class, () -> {
             new Workout(20, 13, 2021, "Running", 5, 90);
         }, "IllegalArgumentException should be thrown when month not between 01 and 12");
 
