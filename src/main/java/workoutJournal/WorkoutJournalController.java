@@ -360,7 +360,7 @@ public class WorkoutJournalController {
             workoutYearsFileHandler.writeWorkoutYear("workoutYearsFile", workoutYearsList);
             showConfirmedMessage("You successfully saved to workoutYearsFile.txt");
         } catch (IOException e) {
-            showErrorMessage("Saving to file did not work, try again later");
+            showErrorMessage("Saving to file did not work, try again later " + e.getMessage());
         }
     }
 

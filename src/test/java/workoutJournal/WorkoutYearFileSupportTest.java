@@ -142,7 +142,7 @@ public class WorkoutYearFileSupportTest {
     @Test
     public void testWriteWorkoutYearsFile() throws IOException {
         getWorkoutYearFileSupport().writeWorkoutYear("newFile", getFilledListOfWorkoutYears());
-        String expectedString = validWorkoutYearsFileContent + "\n";
+        String expectedString = validWorkoutYearsFileContent + System.getProperty("line.separator");
         BufferedReader reader = new BufferedReader(new FileReader(WorkoutYearFileSupportTest.class.getResource("workoutYearsFiles/").getFile() + "newFile.txt"));
         String actualString = "";
         String str = reader.readLine();
@@ -152,14 +152,14 @@ public class WorkoutYearFileSupportTest {
         }
         reader.close();
     
-        assertEquals(expectedString, actualString, "Content of files are not the same");  
+        assertEquals(expectedString, actualString.replaceAll("\\R", System.getProperty("line.separator")), "Content of files are not the same");  
     }
 
-    @AfterAll
-    public void teardown() {
-        getWorkoutYearFileSupport().getFile("validFile").delete();
-        getWorkoutYearFileSupport().getFile("invalidFile").delete();
-        getWorkoutYearFileSupport().getFile("newFile").delete();
+    //@AfterAll
+    //public void teardown() {
+        //getWorkoutYearFileSupport().getFile("validFile").delete();
+        //getWorkoutYearFileSupport().getFile("invalidFile").delete();
+        //getWorkoutYearFileSupport().getFile("newFile").delete();
 
-    }
+    //}
 }
