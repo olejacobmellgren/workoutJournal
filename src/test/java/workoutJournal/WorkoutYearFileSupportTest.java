@@ -155,11 +155,11 @@ public class WorkoutYearFileSupportTest {
         assertEquals(expectedString, actualString.replaceAll("\\R", System.getProperty("line.separator")), "Content of files are not the same");  
     }
 
-    //@AfterAll
-    //public void teardown() {
-        //getWorkoutYearFileSupport().getFile("validFile").delete();
-        //getWorkoutYearFileSupport().getFile("invalidFile").delete();
-        //getWorkoutYearFileSupport().getFile("newFile").delete();
+    @AfterAll
+    public void teardown() {
+        getWorkoutYearFileSupport().getFile("validFile").delete();
+        getWorkoutYearFileSupport().getFile("invalidFile").delete();
+        getWorkoutYearFileSupport().getFile("newFile").delete();
 
-    //}
+    }
 }
