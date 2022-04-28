@@ -71,10 +71,10 @@ public class Workout {
     private void checkDistance(double distance) {
         if (distance > 999) {
             throw new IllegalArgumentException("You are unable to add workout over 1000 kilometres");
-        } else if (distance < 0) {
-            throw new IllegalArgumentException("Distance must be a positive number");
         } else if (type.equals("Strength") && distance != 0) {
             throw new IllegalStateException("Distance must be 0 when type is 'Strength'");
+        } else if (!(distance > 0) && !type.equals("Strength")) {
+            throw new IllegalArgumentException("Distance must be a positive number");
         }
     }
 
