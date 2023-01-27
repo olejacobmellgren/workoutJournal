@@ -54,7 +54,7 @@ public class WorkoutMonthTest {
         checkWorkoutMonth(01, 2021);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            new WorkoutMonth(05, 2022);
+            new WorkoutMonth(05, 2030);
         }, "IllegalArgumentException should be thrown when trying to log workouts in a future workout-month");
 
         assertThrows(IllegalArgumentException.class, () -> {

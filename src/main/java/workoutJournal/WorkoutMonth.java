@@ -29,7 +29,7 @@ public class WorkoutMonth extends WorkoutPeriod{
 
         Calendar c = Calendar.getInstance();
         int yearNow = c.get(Calendar.YEAR);
-        int monthNow = c.get(Calendar.MONTH) + 1;
+        int monthNow = c.get(Calendar.MONTH);
         if ((year == yearNow && month > monthNow)) {
             throw new IllegalArgumentException("Cannot log workout for the future");
         }
